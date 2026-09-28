@@ -185,7 +185,9 @@ def main(argv: Sequence[str] | None = None) -> None:
     )
     boundary = session_boundary(columns)
     if boundary is not None:
-        ax.axvline(boundary, color='black', linewidth=SESSION_DIVIDER_WIDTH, zorder=5, clip_on=False)
+        ax.axvline(
+            boundary, color='black', linewidth=SESSION_DIVIDER_WIDTH, zorder=5, clip_on=False
+        )
     output_stem = args.output.expanduser().resolve()
     if output_stem.suffix.lower() in {'.png', '.pdf'}:
         output_stem = output_stem.with_suffix('')

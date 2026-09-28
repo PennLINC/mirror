@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import re
-from pathlib import Path
 from fnmatch import fnmatch
+from pathlib import Path
+
+import pandas as pd
 
 from utils.metrics import (
     DEFAULT_METRICS_FILE,
@@ -194,11 +196,7 @@ def canonical_metric_name(
 
     if analysis_set is not None:
         allowed = set(metric_order(specs, analysis_set))
-        primary_allowed = {
-            spec.primary_label
-            for spec in specs
-            if spec.label in allowed
-        }
+        primary_allowed = {spec.primary_label for spec in specs if spec.label in allowed}
         if canonical not in allowed and canonical not in primary_allowed:
             return None
     return canonical
@@ -214,9 +212,7 @@ def canonical_metric_from_qsirecon_context(
     variable = norm_token(variable_name)
     context = norm_token(
         ' '.join(
-            str(value)
-            for value in (qsirecon_suffix, source_file, source_tsv)
-            if value is not None
+            str(value) for value in (qsirecon_suffix, source_file, source_tsv) if value is not None
         )
     )
     if not variable or not context:
@@ -252,9 +248,7 @@ def canonical_metric_from_qsirecon_context(
                     compact_variable = compact_variable.removeprefix('modulated')
             if compact_variable.endswith('modulated'):
                 compact_variable = compact_variable.removesuffix('modulated')
-            label = modulated_aliases.get(variable) or modulated_aliases.get(
-                compact_variable
-            )
+            label = modulated_aliases.get(variable) or modulated_aliases.get(compact_variable)
             if label in available:
                 return label
         label = aliases.get(variable)
@@ -315,10 +309,7 @@ def add_metric_metadata(
     by_primary = {spec.primary_label: spec for spec in specs}
 
     out = df.copy()
-    out['metric'] = [
-        canonical_metric_name(value, specs=specs)
-        for value in out[metric_col]
-    ]
+    out['metric'] = [canonical_metric_name(value, specs=specs) for value in out[metric_col]]
     out = out.dropna(subset=['metric']).copy()
     out['source_image'] = [
         (by_label.get(value) or by_primary.get(value)).source_image

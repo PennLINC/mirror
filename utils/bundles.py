@@ -77,7 +77,9 @@ def resolve_tckmap_command() -> list[str]:
             )
 
         requested_runtime = os.environ.get('APPTAINER_BIN')
-        runtime_candidates = [requested_runtime] if requested_runtime else ['apptainer', 'singularity']
+        runtime_candidates = (
+            [requested_runtime] if requested_runtime else ['apptainer', 'singularity']
+        )
         runtime = next(
             (
                 resolved

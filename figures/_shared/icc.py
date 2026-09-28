@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import sys
 from pathlib import Path
 
 try:
@@ -83,7 +84,9 @@ def metric_slug(metric_key: str) -> str:
     return safe_label(label)
 
 
-def source_and_display_lookup(patterns_file: Path, analysis_set: str) -> tuple[dict[str, str], dict[str, str]]:
+def source_and_display_lookup(
+    patterns_file: Path, analysis_set: str
+) -> tuple[dict[str, str], dict[str, str]]:
     specs = build_metric_specs(patterns_file)
     source_by_label = {spec.label: spec.source_image for spec in specs}
     display_by_label: dict[str, str] = {}
@@ -123,9 +126,7 @@ def summarize_metric_values(df: pd.DataFrame) -> pd.DataFrame:
             {
                 'tissue': tissue,
                 'mask_tissue': (
-                    str(group['mask_tissue'].iloc[0])
-                    if 'mask_tissue' in group.columns
-                    else tissue
+                    str(group['mask_tissue'].iloc[0]) if 'mask_tissue' in group.columns else tissue
                 ),
                 'metric_key': metric_key,
                 'metric': metric,
@@ -169,7 +170,9 @@ def load_parcel_bundle_icc(
                     'tissue': tissue,
                     'metric_key': metric_key,
                     'metric': display_by_label.get(metric_key, str(row.get('metric', metric_key))),
-                    'source_image': row.get('source_image', source_by_label.get(metric_key, 'Other')),
+                    'source_image': row.get(
+                        'source_image', source_by_label.get(metric_key, 'Other')
+                    ),
                     'icc': row['ICC2_1'],
                 }
             )
@@ -184,9 +187,7 @@ def find_mask(icc_dir: Path, tissue: str) -> Path:
         'wm': 'WM',
     }[tissue]
     candidates = sorted(
-        icc_dir.glob(
-            f'space-{SPACE}_label-{label}_desc-templateAsegEroded*mm_mask.nii.gz'
-        )
+        icc_dir.glob(f'space-{SPACE}_label-{label}_desc-templateAsegEroded*mm_mask.nii.gz')
     )
     if not candidates:
         candidates = sorted(icc_dir.glob(f'space-{SPACE}_label-{label}_desc-*mask.nii.gz'))
@@ -284,7 +285,6 @@ def draw_interval_panel(
     xlabel: str,
 ) -> None:
     order = metric_order_for_tissue(summary, tissue)
-    tissue_data = data.loc[data['tissue'] == tissue]
     tissue_summary = summary.loc[summary['tissue'] == tissue].set_index('metric_key')
     if not order:
         ax.text(0.5, 0.5, f'No {TISSUE_NAMES[tissue]} ICC data', ha='center', va='center')
@@ -310,7 +310,9 @@ def draw_interval_panel(
                 zorder=2,
             )
         )
-        ax.plot([median, median], [position - 0.23, position + 0.23], color='white', lw=1.8, zorder=3)
+        ax.plot(
+            [median, median], [position - 0.23, position + 0.23], color='white', lw=1.8, zorder=3
+        )
         ax.scatter([median], [position], s=24, facecolor='white', edgecolor='#2b2b2b', zorder=4)
         ax.text(
             -0.02,
@@ -325,7 +327,7 @@ def draw_interval_panel(
         ax.text(
             1.02,
             position,
-            f"{median:.2f} [{q25:.2f}, {q75:.2f}]",
+            f'{median:.2f} [{q25:.2f}, {q75:.2f}]',
             transform=ax.get_yaxis_transform(),
             ha='left',
             va='center',
@@ -375,10 +377,7 @@ def boxes_overlap(
     second: tuple[float, float, float, float],
 ) -> bool:
     return not (
-        first[1] < second[0]
-        or second[1] < first[0]
-        or first[3] < second[2]
-        or second[3] < first[2]
+        first[1] < second[0] or second[1] < first[0] or first[3] < second[2] or second[3] < first[2]
     )
 
 
@@ -647,8 +646,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument('--analysis-set', choices=('primary', 'full'), default='primary')
     parser.add_argument('--stat', choices=('mean', 'median'), default='median')
     parser.add_argument('--mni-icc-dir', type=Path, default=default_mni_icc_dir())
-    parser.add_argument('--parcel-bundle-icc-dir', type=Path, default=default_parcel_bundle_icc_dir())
-    parser.add_argument('--patterns-file', type=Path, default=CODE_ROOT / 'configuration' / 'metrics.yml')
+    parser.add_argument(
+        '--parcel-bundle-icc-dir', type=Path, default=default_parcel_bundle_icc_dir()
+    )
+    parser.add_argument(
+        '--patterns-file', type=Path, default=CODE_ROOT / 'configuration' / 'metrics.yml'
+    )
     parser.add_argument('--output-dir', type=Path, default=RUN_FIGURES_ROOT / 'icc')
     parser.add_argument('--voxelwise-analysis', default='primary')
     parser.add_argument('--max-voxels-per-metric', type=int, default=None)

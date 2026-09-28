@@ -50,7 +50,7 @@ logging.getLogger('matplotlib.font_manager').setLevel(logging.ERROR)
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
-from matplotlib.path import Path
+from matplotlib.path import Path as MplPath
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(_REPO_ROOT))
@@ -65,7 +65,6 @@ from utils.workflow import (  # noqa: E402
     INK,
     INK_MUTED,
     MODALITIES,
-    PALETTE,
     draw_box,
     draw_edge,
     tint,
@@ -88,6 +87,7 @@ def save_figure(fig):
             facecolor='white',
         )
     print(f'Wrote {output_stem}.png / .pdf')
+
 
 # Every scalar map is normalized through the sMRIPrep anatomical reference,
 # which is built from this modality.
@@ -296,9 +296,7 @@ def grouped_family(signature, names):
         return families.pop()
     if not families:
         return 'Other'
-    raise ValueError(
-        f'Scalar set {names!r} mixes metric families: {sorted(families)}'
-    )
+    raise ValueError(f'Scalar set {names!r} mixes metric families: {sorted(families)}')
 
 
 def modality_color(name):
@@ -714,15 +712,15 @@ def spline_path(points, tension=SPLINE_TENSION):
             deduped.append(point)
     pts = deduped
     if len(pts) < 2:
-        return Path(pts * 2, [Path.MOVETO, Path.LINETO])
+        return MplPath(pts * 2, [MplPath.MOVETO, MplPath.LINETO])
 
     verts = [pts[0]]
-    codes = [Path.MOVETO]
+    codes = [MplPath.MOVETO]
     for start, end in zip(pts, pts[1:]):
         handle = np.array([abs(end[0] - start[0]) * tension, 0.0])
         verts += [start + handle, end - handle, end]
-        codes += [Path.CURVE4] * 3
-    return Path(verts, codes)
+        codes += [MplPath.CURVE4] * 3
+    return MplPath(verts, codes)
 
 
 def check_no_box_intrusions(routes, rects, margin=0.35, samples=800):

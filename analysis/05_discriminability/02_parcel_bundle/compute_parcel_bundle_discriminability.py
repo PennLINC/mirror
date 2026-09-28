@@ -265,7 +265,11 @@ def _compute_discriminability(
 
     if not rows:
         return pd.DataFrame(columns=RESULT_COLUMNS)
-    return pd.DataFrame(rows, columns=RESULT_COLUMNS).sort_values(['profile_type', 'profile_group']).reset_index(drop=True)
+    return (
+        pd.DataFrame(rows, columns=RESULT_COLUMNS)
+        .sort_values(['profile_type', 'profile_group'])
+        .reset_index(drop=True)
+    )
 
 
 def filter_analysis_set(
@@ -479,11 +483,11 @@ def main() -> None:
                 wm_out.insert(1, 'qc_mode', qc_mode)
                 wm_out.insert(2, 'profile_group_key', wm_out['profile_group'])
                 wm_out['profile_group'] = (
-                    wm_out['profile_group_key']
-                    .map(display)
-                    .fillna(wm_out['profile_group_key'])
+                    wm_out['profile_group_key'].map(display).fillna(wm_out['profile_group_key'])
                 )
-                wm_out['source_image'] = wm_out['profile_group_key'].map(source_by_metric).fillna('Other')
+                wm_out['source_image'] = (
+                    wm_out['profile_group_key'].map(source_by_metric).fillna('Other')
+                )
                 out_csv = outdir / f'discriminability_wm_bundles_{analysis_set}_{suffix}.csv'
                 wm_out.to_csv(out_csv, index=False)
                 write_metric_inclusion(
@@ -554,17 +558,14 @@ def main() -> None:
                 dkt_out.insert(1, 'qc_mode', qc_mode)
                 dkt_out.insert(2, 'profile_group_key', dkt_out['profile_group'])
                 dkt_out['profile_group'] = (
-                    dkt_out['profile_group_key']
-                    .map(display)
-                    .fillna(dkt_out['profile_group_key'])
+                    dkt_out['profile_group_key'].map(display).fillna(dkt_out['profile_group_key'])
                 )
-                dkt_out['source_image'] = dkt_out['profile_group_key'].map(source_by_metric).fillna('Other')
-                out_csv = (
-                    outdir
-                    / (
-                        f'discriminability_DKTatlas_{analysis_set}_{args.stat}_'
-                        f'{args.distance_metric}.csv'
-                    )
+                dkt_out['source_image'] = (
+                    dkt_out['profile_group_key'].map(source_by_metric).fillna('Other')
+                )
+                out_csv = outdir / (
+                    f'discriminability_DKTatlas_{analysis_set}_{args.stat}_'
+                    f'{args.distance_metric}.csv'
                 )
                 dkt_out.to_csv(out_csv, index=False)
                 write_metric_inclusion(

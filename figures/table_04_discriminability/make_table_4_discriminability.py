@@ -11,8 +11,10 @@ from collections import defaultdict
 from pathlib import Path
 
 try:
+    import numpy as np
     import pandas as pd
 except ImportError:  # pragma: no cover - checked after argparse handles --help
+    np = None
     pd = None
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -45,9 +47,17 @@ def default_gm_icc_input(icc_dir: Path, analysis_set: str, stat: str) -> Path:
 
 
 def require_dependencies() -> None:
-    if pd is None:
+    missing = [
+        name
+        for name, module in (
+            ('numpy', np),
+            ('pandas', pd),
+        )
+        if module is None
+    ]
+    if missing:
         raise RuntimeError(
-            'Missing required Python package: pandas. '
+            f'Missing required Python packages: {", ".join(missing)}. '
             'Activate the MIRROR analysis environment first.'
         )
 
@@ -79,10 +89,9 @@ def family_icc_order(wm_icc: Path, gm_icc: Path) -> list[str]:
         ],
         ignore_index=True,
     )
-    metric_level = (
-        icc.groupby(['source_image', 'tissue', 'metric_key'], as_index=False)['ICC2_1']
-        .mean()
-    )
+    metric_level = icc.groupby(['source_image', 'tissue', 'metric_key'], as_index=False)[
+        'ICC2_1'
+    ].mean()
     family_level = (
         metric_level.groupby('source_image', as_index=False)['ICC2_1']
         .mean()
@@ -91,7 +100,9 @@ def family_icc_order(wm_icc: Path, gm_icc: Path) -> list[str]:
     return family_level['source_image'].astype(str).tolist()
 
 
-def load_combined_discriminability(wm_input: Path, gm_input: Path, score_column: str) -> pd.DataFrame:
+def load_combined_discriminability(
+    wm_input: Path, gm_input: Path, score_column: str
+) -> pd.DataFrame:
     return pd.concat(
         [
             load_discriminability_table(wm_input, 'wm', score_column),
@@ -164,8 +175,7 @@ def combine_equal_score_rows(rows: pd.DataFrame) -> list[dict[str, object]]:
             {
                 'metric_keys': [str(item['metric_key']) for item in group_rows],
                 'metrics': [
-                    display_metric_name(item['metric_key'], item['metric'])
-                    for item in group_rows
+                    display_metric_name(item['metric_key'], item['metric']) for item in group_rows
                 ],
                 'wm': math.nan if wm_key == 'NA' else float(wm_key),
                 'gm': math.nan if gm_key == 'NA' else float(gm_key),
@@ -201,7 +211,7 @@ def hex_to_rgb(color: str) -> tuple[int, int, int]:
     token = color.strip().lstrip('#')
     if len(token) != 6:
         return (153, 153, 153)
-    return tuple(int(token[index:index + 2], 16) for index in range(0, 6, 2))
+    return tuple(int(token[index : index + 2], 16) for index in range(0, 6, 2))
 
 
 def tinted_background(color: str, alpha: float = 0.12) -> str:
@@ -327,7 +337,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--analysis-set', choices=('primary', 'full'), default='primary')
     parser.add_argument('--stat', choices=('mean', 'median'), default='median')
-    parser.add_argument('--distance-metric', choices=('correlation', 'euclidean'), default='correlation')
+    parser.add_argument(
+        '--distance-metric', choices=('correlation', 'euclidean'), default='correlation'
+    )
     parser.add_argument('--score-column', choices=tuple(SCORE_COLUMNS), default='discriminability')
     parser.add_argument(
         '--input-dir',

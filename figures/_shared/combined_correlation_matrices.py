@@ -43,7 +43,6 @@ from utils.paths import CODE_ROOT, OUTPUT_DERIVATIVES_ROOT, RUN_FIGURES_ROOT
 from figures._shared.correlation_matrices import (
     PARCEL_CORRELATIONS,
     PARCEL_STAT,
-    clean_title_token,
     load_correlation_matrix,
     mni_input_path,
     parcel_input_path,
@@ -140,7 +139,9 @@ def figure_size(panel_matrices: list[pd.DataFrame]) -> tuple[float, float]:
     return width, 2.0 * panel_height + 2.15
 
 
-def align_side_axes_to_heatmaps(fig: plt.Figure, panel_axes: list[tuple[plt.Axes, plt.Axes, plt.Axes]]) -> None:
+def align_side_axes_to_heatmaps(
+    fig: plt.Figure, panel_axes: list[tuple[plt.Axes, plt.Axes, plt.Axes]]
+) -> None:
     """Match dendrogram/source-strip boxes to the final square heatmap boxes."""
 
     fig.canvas.draw()
@@ -328,7 +329,9 @@ def draw_combined_figure(
 
     image = None
     panel_axes: list[tuple[plt.Axes, plt.Axes, plt.Axes]] = []
-    for panel_index, (panel, matrix, z_matrix) in enumerate(zip(panels, matrices, linkages, strict=True)):
+    for panel_index, (panel, matrix, z_matrix) in enumerate(
+        zip(panels, matrices, linkages, strict=True)
+    ):
         inner = GridSpecFromSubplotSpec(
             1,
             3,
@@ -547,7 +550,9 @@ def main() -> None:
                 )
                 missing = [panel.path for panel in panels if not panel.path.exists()]
                 if missing:
-                    message = 'Missing input(s), skipping combined figure: ' + ', '.join(map(str, missing))
+                    message = 'Missing input(s), skipping combined figure: ' + ', '.join(
+                        map(str, missing)
+                    )
                     if args.strict:
                         raise FileNotFoundError(message)
                     print(f'[WARN] {message}', flush=True)

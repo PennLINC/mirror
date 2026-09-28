@@ -55,7 +55,6 @@ from matplotlib.backends.backend_pdf import PdfPages
 from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.lines import Line2D
 from nibabel.affines import apply_affine
-from nibabel.processing import resample_from_to
 from scipy.stats import gaussian_kde
 
 from utils.images import first_glob, load_canonical, resample_image  # noqa: E402
@@ -98,6 +97,8 @@ class DerivativeOverlay:
 
     def __str__(self) -> str:
         return f'source={self.source_root}; run={self.run_root}'
+
+
 DKT_LABEL_IDS = {
     1002,
     1003,
@@ -1960,16 +1961,14 @@ def parse_metrics(
     patterns_file: Path = DEFAULT_PATTERNS_FILE,
 ) -> list[MetricPattern]:
     metric_by_label = {
-        metric.label: metric
-        for metric in primary_metric_patterns(patterns_file, None, 'T1w')
+        metric.label: metric for metric in primary_metric_patterns(patterns_file, None, 'T1w')
     }
     if not requested:
         return list(metric_by_label.values())
     unknown = sorted(set(requested).difference(metric_by_label))
     if unknown:
         raise ValueError(
-            f'Unknown T1w primary metric(s): {unknown}. '
-            f'Choices: {sorted(metric_by_label)}'
+            f'Unknown T1w primary metric(s): {unknown}. Choices: {sorted(metric_by_label)}'
         )
     return [metric_by_label[label] for label in requested]
 
@@ -2020,7 +2019,6 @@ def build_session_keys(
 
 
 def generate_report(args: argparse.Namespace) -> tuple[Path, list[StatusEntry]]:
-    project_root = Path(args.project_root).expanduser().resolve()
     if args.derivatives_root:
         source_derivatives = Path(args.derivatives_root).expanduser().resolve()
         run_derivatives = source_derivatives

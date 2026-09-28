@@ -58,7 +58,10 @@ def source_display_label(source: str) -> str:
 
 
 def default_wm_input(outdir: Path, analysis_set: str, stat: str, distance_metric: str) -> Path:
-    masked = outdir / f'discriminability_wm_bundles_{analysis_set}_masked_preferred_{stat}_{distance_metric}.csv'
+    masked = (
+        outdir
+        / f'discriminability_wm_bundles_{analysis_set}_masked_preferred_{stat}_{distance_metric}.csv'
+    )
     if masked.exists():
         return masked
     return outdir / f'discriminability_wm_bundles_{analysis_set}_{stat}_{distance_metric}.csv'
@@ -140,7 +143,7 @@ def draw_bar_panel(ax, data: pd.DataFrame, tissue: str, title: str, xlabel: str)
         ax.text(
             row['score'] + 0.012,
             position,
-            f"{row['score']:.2f}",
+            f'{row["score"]:.2f}',
             ha='left',
             va='center',
             fontsize=8.2,
@@ -218,7 +221,16 @@ def draw_scatter_panel(ax, data: pd.DataFrame, xlabel: str, ylabel: str) -> None
                 zorder=4,
             )
         else:
-            ax.text(label_x, label_y, label, fontsize=7.2, color=color, ha=label_ha, va='center', zorder=4)
+            ax.text(
+                label_x,
+                label_y,
+                label,
+                fontsize=7.2,
+                color=color,
+                ha=label_ha,
+                va='center',
+                zorder=4,
+            )
     ax.text(
         0.10,
         0.82,
@@ -252,7 +264,9 @@ def draw_scatter_panel(ax, data: pd.DataFrame, xlabel: str, ylabel: str) -> None
 def add_source_legend(fig, data: pd.DataFrame) -> None:
     sources = [source for source in SOURCE_IMAGE_COLORS if source in set(data['source_image'])]
     handles = [
-        Patch(facecolor=color_for_source(source), edgecolor='none', label=source_display_label(source))
+        Patch(
+            facecolor=color_for_source(source), edgecolor='none', label=source_display_label(source)
+        )
         for source in sources
     ]
     fig.legend(
@@ -293,7 +307,9 @@ def plot_discriminability(data: pd.DataFrame, output_prefix: Path, score_label: 
         hspace=0.18,
     )
     axes = [fig.add_subplot(grid[index, 0]) for index in range(3)]
-    draw_bar_panel(axes[0], data, 'wm', 'White Matter (Bundles)', f'{score_label} across WM bundles')
+    draw_bar_panel(
+        axes[0], data, 'wm', 'White Matter (Bundles)', f'{score_label} across WM bundles'
+    )
     draw_bar_panel(axes[1], data, 'gm', 'Gray Matter (Parcels)', f'{score_label} across GM parcels')
     draw_scatter_panel(
         axes[2],
@@ -327,7 +343,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--analysis-set', choices=('primary', 'full'), default='primary')
     parser.add_argument('--stat', choices=('mean', 'median'), default='median')
-    parser.add_argument('--distance-metric', choices=('correlation', 'euclidean'), default='correlation')
+    parser.add_argument(
+        '--distance-metric', choices=('correlation', 'euclidean'), default='correlation'
+    )
     parser.add_argument('--score-column', choices=tuple(SCORE_COLUMNS), default='discriminability')
     parser.add_argument(
         '--input-dir',

@@ -134,11 +134,15 @@ def mean_correlation_matrix(
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     subject_z_mats = []
     subject_count_mats = []
-    for subject, subject_df in long_df[long_df['metric'].isin(labels)].groupby('subject', sort=True):
+    for subject, subject_df in long_df[long_df['metric'].isin(labels)].groupby(
+        'subject', sort=True
+    ):
         session_z_mats = []
         session_count_mats = []
         for _, dfg in subject_df.groupby('session', sort=True):
-            profile = dfg.pivot_table(index='feature', columns='metric', values='value', aggfunc='mean')
+            profile = dfg.pivot_table(
+                index='feature', columns='metric', values='value', aggfunc='mean'
+            )
             profile = profile.reindex(columns=labels)
             profile = profile.dropna(axis=1, how='all')
             if profile.shape[1] < 2:
@@ -176,7 +180,9 @@ def mean_correlation_matrix(
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--patterns-file', type=Path, default=REPO_ROOT / 'configuration' / 'metrics.yml')
+    parser.add_argument(
+        '--patterns-file', type=Path, default=REPO_ROOT / 'configuration' / 'metrics.yml'
+    )
     parser.add_argument('--qc-file', type=Path, default=DEFAULT_QC_FILE)
     parser.add_argument(
         '--outdir',
@@ -262,18 +268,16 @@ def main() -> None:
             )
             observed_before_qc_labels = set(raw_df['metric'])
             observed_labels = set(long_df['metric'])
-            labels = [
-                label
-                for label in expected_labels
-                if label in observed_labels
-            ]
+            labels = [label for label in expected_labels if label in observed_labels]
             display = metric_display_labels(
                 specs,
                 analysis_set,
                 tissue=tissue,
             )
             for correlation_method in correlation_methods:
-                stem = args.outdir / f'{profile_type}_{analysis_set}_{correlation_method}_{args.stat}'
+                stem = (
+                    args.outdir / f'{profile_type}_{analysis_set}_{correlation_method}_{args.stat}'
+                )
                 write_metric_inclusion(
                     stem.with_name(stem.name + '_metric_inclusion.tsv'),
                     profile_type,

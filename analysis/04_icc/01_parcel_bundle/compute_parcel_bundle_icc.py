@@ -166,7 +166,9 @@ def compute_icc_table(long_df: pd.DataFrame, profile_type: str, stat: str) -> pd
                 'n_observations': int(len(paired)),
             }
         )
-    return pd.DataFrame(rows).sort_values(['profile_type', 'metric', 'feature']).reset_index(drop=True)
+    return (
+        pd.DataFrame(rows).sort_values(['profile_type', 'metric', 'feature']).reset_index(drop=True)
+    )
 
 
 def write_metric_inclusion(
@@ -224,7 +226,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument('--wm-input-globs', nargs='+', default=DEFAULT_WM_GLOBS)
     parser.add_argument('--dkt-input-glob', nargs='+', default=DEFAULT_DKT_GLOBS)
     parser.add_argument('--qc-file', type=Path, default=DEFAULT_QC_FILE)
-    parser.add_argument('--patterns-file', type=Path, default=REPO_ROOT / 'configuration' / 'metrics.yml')
+    parser.add_argument(
+        '--patterns-file', type=Path, default=REPO_ROOT / 'configuration' / 'metrics.yml'
+    )
     parser.add_argument(
         '--outdir',
         type=Path,

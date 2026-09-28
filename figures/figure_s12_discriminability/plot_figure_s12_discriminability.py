@@ -210,7 +210,7 @@ def report_unexpected_missing_scores(
                         }
                     )
                     if reasons:
-                        details = f" ({'; '.join(reasons)})"
+                        details = f' ({"; ".join(reasons)})'
             print(
                 f'[WARN] No {tissue.upper()} discriminability score for {concept}{details}',
                 flush=True,
@@ -356,9 +356,7 @@ def plot_faceted_heatmaps(
             )
             ax.set_yticks([0, 1])
             ax.set_yticklabels(
-                ['White matter bundles', 'Gray matter parcels']
-                if panel_index == 0
-                else ['', ''],
+                ['White matter bundles', 'Gray matter parcels'] if panel_index == 0 else ['', ''],
                 fontsize=12.0,
             )
             ax.tick_params(length=0, pad=4)
@@ -417,7 +415,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--analysis-set', choices=('primary', 'full'), default='full')
     parser.add_argument('--stat', choices=('mean', 'median'), default='median')
-    parser.add_argument('--distance-metric', choices=('correlation', 'euclidean'), default='correlation')
+    parser.add_argument(
+        '--distance-metric', choices=('correlation', 'euclidean'), default='correlation'
+    )
     parser.add_argument('--score-column', choices=tuple(SCORE_COLUMNS), default='discriminability')
     parser.add_argument(
         '--category-level',

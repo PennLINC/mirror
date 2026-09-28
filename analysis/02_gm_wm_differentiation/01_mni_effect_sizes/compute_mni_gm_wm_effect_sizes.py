@@ -97,9 +97,7 @@ def resolve_default_qc(no_qc: bool, requested: Path | None) -> Path | None:
         return None
     if requested is not None:
         return requested.expanduser().resolve()
-    candidates = (
-        CODE_ROOT / 'data' / 'qc' / 'manual_qc_modality.tsv',
-    )
+    candidates = (CODE_ROOT / 'data' / 'qc' / 'manual_qc_modality.tsv',)
     return next((path for path in candidates if path.exists()), None)
 
 
@@ -266,14 +264,18 @@ def average_sessions(session_rows: pd.DataFrame) -> pd.DataFrame:
     numeric_cols = [
         column
         for column in session_rows.columns
-        if column not in {*group_cols, 'session', 'metric_file', 'gm_metric_file', 'wm_metric_file', 'tissue_mask_file'}
+        if column
+        not in {
+            *group_cols,
+            'session',
+            'metric_file',
+            'gm_metric_file',
+            'wm_metric_file',
+            'tissue_mask_file',
+        }
         and pd.api.types.is_numeric_dtype(session_rows[column])
     ]
-    out = (
-        session_rows.groupby(group_cols, sort=False)[numeric_cols]
-        .mean()
-        .reset_index()
-    )
+    out = session_rows.groupby(group_cols, sort=False)[numeric_cols].mean().reset_index()
     session_info = (
         session_rows.groupby(group_cols, sort=False)
         .agg(
@@ -282,7 +284,10 @@ def average_sessions(session_rows: pd.DataFrame) -> pd.DataFrame:
             metric_files=('metric_file', lambda values: ';'.join(map(str, values))),
             gm_metric_files=('gm_metric_file', lambda values: ';'.join(map(str, values))),
             wm_metric_files=('wm_metric_file', lambda values: ';'.join(map(str, values))),
-            tissue_mask_files=('tissue_mask_file', lambda values: ';'.join(sorted(map(str, set(values))))),
+            tissue_mask_files=(
+                'tissue_mask_file',
+                lambda values: ';'.join(sorted(map(str, set(values)))),
+            ),
         )
         .reset_index()
     )
@@ -321,14 +326,12 @@ def summarize_subjects(subject_rows: pd.DataFrame) -> pd.DataFrame:
             row[f'{column}_q75'] = float(np.percentile(finite, 75)) if finite.size else np.nan
             row[f'{column}_sd'] = float(np.std(finite, ddof=1)) if finite.size > 1 else np.nan
             row[f'{column}_sem'] = (
-                float(np.std(finite, ddof=1) / np.sqrt(finite.size))
-                if finite.size > 1
-                else np.nan
+                float(np.std(finite, ddof=1) / np.sqrt(finite.size)) if finite.size > 1 else np.nan
             )
         rows.append(row)
-    return pd.DataFrame(rows).sort_values(
-        ['gm_tissue', 'robust_median_d_mean']
-    ).reset_index(drop=True)
+    return (
+        pd.DataFrame(rows).sort_values(['gm_tissue', 'robust_median_d_mean']).reset_index(drop=True)
+    )
 
 
 def write_metric_inclusion(
@@ -387,7 +390,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument('--project-root', type=Path, default=PROJECT_ROOT)
     parser.add_argument('--derivatives-dir', type=Path, default=None)
     parser.add_argument('--run-derivatives-dir', type=Path, default=OUTPUT_DERIVATIVES_ROOT)
-    parser.add_argument('--patterns-file', type=Path, default=CODE_ROOT / 'configuration' / 'metrics.yml')
+    parser.add_argument(
+        '--patterns-file', type=Path, default=CODE_ROOT / 'configuration' / 'metrics.yml'
+    )
     parser.add_argument('--qc-file', type=Path, default=None)
     parser.add_argument('--subject-id', action='append', help='Subject(s), with or without sub-.')
     parser.add_argument('--session-id', action='append', help='Session(s), with or without ses-.')
@@ -444,9 +449,7 @@ def main() -> None:
     args.output_dir = args.output_dir.expanduser().resolve()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     args.gm_tissues = args.gm_tissue if args.gm_tissue else list(GM_TISSUES)
-    data_candidates = (
-        CODE_ROOT / 'data' / 'atlases',
-    )
+    data_candidates = (CODE_ROOT / 'data' / 'atlases',)
     if args.template_dseg is None:
         args.template_dseg = next(
             (
@@ -478,11 +481,7 @@ def main() -> None:
     hybrid_gm_labels = set(hybrid_pairs.values())
     path_specs_by_label = {spec.label: spec for spec in specs}
     path_specs_by_label.update(
-        {
-            spec.label: spec
-            for spec in all_specs
-            if spec.label in hybrid_gm_labels
-        }
+        {spec.label: spec for spec in all_specs if spec.label in hybrid_gm_labels}
     )
     path_specs = list(path_specs_by_label.values())
     display_labels = metric_display_labels(all_specs, args.analysis_set)
@@ -609,7 +608,11 @@ def main() -> None:
                     )
                     continue
                 wm_data = load_like(wm_path, reference, order=1).reshape(-1)
-                gm_data = wm_data if gm_path == wm_path else load_like(gm_path, reference, order=1).reshape(-1)
+                gm_data = (
+                    wm_data
+                    if gm_path == wm_path
+                    else load_like(gm_path, reference, order=1).reshape(-1)
+                )
                 for gm_tissue in args.gm_tissues:
                     row, diagnostic = compute_effect_row(
                         subject,
@@ -641,8 +644,12 @@ def main() -> None:
     session_out = args.output_dir / f'mni_gm_wm_effect_sizes_{args.analysis_set}_session.tsv'
     subject_out = args.output_dir / f'mni_gm_wm_effect_sizes_{args.analysis_set}_subject.tsv'
     summary_out = args.output_dir / f'mni_gm_wm_effect_sizes_{args.analysis_set}_summary.tsv'
-    diagnostics_out = args.output_dir / f'mni_gm_wm_effect_sizes_{args.analysis_set}_diagnostics.tsv'
-    inclusion_out = args.output_dir / f'mni_gm_wm_effect_sizes_{args.analysis_set}_metric_inclusion.tsv'
+    diagnostics_out = (
+        args.output_dir / f'mni_gm_wm_effect_sizes_{args.analysis_set}_diagnostics.tsv'
+    )
+    inclusion_out = (
+        args.output_dir / f'mni_gm_wm_effect_sizes_{args.analysis_set}_metric_inclusion.tsv'
+    )
 
     session_df.to_csv(session_out, sep='\t', index=False)
     subject_df.to_csv(subject_out, sep='\t', index=False)

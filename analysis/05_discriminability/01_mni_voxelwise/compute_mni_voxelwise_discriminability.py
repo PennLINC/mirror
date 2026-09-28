@@ -10,7 +10,6 @@ chunks, and reports discriminability plus nearest-neighbor accuracy.
 from __future__ import annotations
 
 import argparse
-import json
 import re
 import sys
 import warnings
@@ -289,10 +288,7 @@ def pair_gmwm_hybrid_profiles(
     wm_profiles: list[dict[str, object]],
     gm_profiles: list[dict[str, object]],
 ) -> list[dict[str, object]]:
-    gm_by_key = {
-        (profile['subject'], profile['session']): profile
-        for profile in gm_profiles
-    }
+    gm_by_key = {(profile['subject'], profile['session']): profile for profile in gm_profiles}
     paired = []
     for profile in wm_profiles:
         gm_profile = gm_by_key.get((profile['subject'], profile['session']))
@@ -316,11 +312,7 @@ def keep_subjects_with_multiple_sessions(
         for subject, sessions in sessions_by_subject.items()
         if len(sessions) >= min_sessions
     }
-    return [
-        profile
-        for profile in profiles
-        if str(profile['subject']) in paired_subjects
-    ]
+    return [profile for profile in profiles if str(profile['subject']) in paired_subjects]
 
 
 def common_metric_mask(
@@ -378,7 +370,9 @@ def pairwise_distances_chunked(
         sums = np.zeros((n_profiles, n_profiles), dtype=np.float64)
         for start in range(0, len(indices), chunk_size):
             chunk_idx = indices[start : start + chunk_size]
-            chunk = np.vstack([values[chunk_idx] for values in values_by_profile]).astype(np.float64)
+            chunk = np.vstack([values[chunk_idx] for values in values_by_profile]).astype(
+                np.float64
+            )
             if zscore_features:
                 chunk = zscore_feature_chunk(chunk)
             for i in range(n_profiles):
@@ -492,7 +486,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument('--metric', action='append')
     parser.add_argument('--analysis-set', choices=ANALYSIS_SETS, default='primary')
     parser.add_argument('--tissue', action='append', choices=TISSUES, default=None)
-    parser.add_argument('--distance-metric', choices=('correlation', 'euclidean'), default='correlation')
+    parser.add_argument(
+        '--distance-metric', choices=('correlation', 'euclidean'), default='correlation'
+    )
     parser.add_argument('--zscore-features', action='store_true')
     parser.add_argument(
         '--template-dseg',
@@ -523,9 +519,7 @@ def parse_args() -> argparse.Namespace:
     if not args.patterns_file.exists():
         args.patterns_file = REPO_ROOT / 'configuration' / 'metrics.yml'
     if args.qc_file is None and not args.no_qc:
-        candidates = (
-            REPO_ROOT / 'data' / 'qc' / 'manual_qc_modality.tsv',
-        )
+        candidates = (REPO_ROOT / 'data' / 'qc' / 'manual_qc_modality.tsv',)
         args.qc_file = next((path for path in candidates if path.exists()), None)
     elif args.qc_file is not None:
         args.qc_file = args.qc_file.expanduser().resolve()
@@ -546,9 +540,7 @@ def parse_args() -> argparse.Namespace:
         parser.error('--chunk-size must be positive.')
     if args.min_features < 1:
         parser.error('--min-features must be positive.')
-    data_candidates = (
-        REPO_ROOT / 'data' / 'atlases',
-    )
+    data_candidates = (REPO_ROOT / 'data' / 'atlases',)
     if args.template_dseg is None:
         args.template_dseg = next(
             (
@@ -673,11 +665,7 @@ def main() -> None:
                 outlier_z=args.outlier_z,
                 remove_zeros=not args.allow_zero,
                 gm_mask=tissue_gm_mask,
-                outlier_masks=(
-                    (masks['all_gm'], masks['wm'])
-                    if tissue == 'gmwm'
-                    else None
-                ),
+                outlier_masks=((masks['all_gm'], masks['wm']) if tissue == 'gmwm' else None),
             )
             n_features = int(np.count_nonzero(common_mask))
             coverage_rows.append(
@@ -738,14 +726,8 @@ def main() -> None:
                 analysis_set,
                 tissue=metric_registry_tissue(tissue),
             ):
-                observed = (
-                    not coverage_df.empty
-                    and bool(
-                        (
-                            (coverage_df['metric'] == label)
-                            & (coverage_df['tissue'] == tissue)
-                        ).any()
-                    )
+                observed = not coverage_df.empty and bool(
+                    ((coverage_df['metric'] == label) & (coverage_df['tissue'] == tissue)).any()
                 )
                 scored = (analysis_set, tissue, label) in scored_keys
                 inclusion_rows.append(

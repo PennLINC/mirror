@@ -113,7 +113,7 @@ def hex_to_rgb(color: str) -> tuple[int, int, int]:
     token = color.strip().lstrip('#')
     if len(token) != 6:
         return (153, 153, 153)
-    return tuple(int(token[index:index + 2], 16) for index in range(0, 6, 2))
+    return tuple(int(token[index : index + 2], 16) for index in range(0, 6, 2))
 
 
 def tinted_background(color: str, alpha: float = 0.10) -> str:

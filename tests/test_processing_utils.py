@@ -126,7 +126,7 @@ class TestGetFilename:
     """Mock-based tests for the BIDS filename builder."""
 
     def test_entity_merging(self, mock_bids_layout, tmp_path):
-        from utils import get_filename
+        from utils.processing import get_filename
 
         name_source = 'sub-01_ses-01_run-01_T1w.nii.gz'
         out_dir = str(tmp_path / 'out')
@@ -153,7 +153,7 @@ class TestGetFilename:
         assert merged['desc'] == 'preproc'
 
     def test_dismiss_entities(self, mock_bids_layout, tmp_path):
-        from utils import get_filename
+        from utils.processing import get_filename
 
         name_source = 'sub-01_ses-01_echo-1_run-01_T1w.nii.gz'
         out_dir = str(tmp_path / 'out')
@@ -179,7 +179,7 @@ class TestGetFilename:
 
     def test_override_entities(self, mock_bids_layout, tmp_path):
         """Caller-supplied entities override source entities."""
-        from utils import get_filename
+        from utils.processing import get_filename
 
         name_source = 'sub-01_ses-01_T1w.nii.gz'
         out_dir = str(tmp_path / 'out')
@@ -198,7 +198,7 @@ class TestGetFilename:
 
     def test_output_dir_substitution(self, mock_bids_layout, tmp_path):
         """Layout root should be replaced with out_dir in the returned path."""
-        from utils import get_filename
+        from utils.processing import get_filename
 
         out_dir = str(tmp_path / 'derivatives')
 
@@ -225,7 +225,7 @@ class TestRunCommand:
 
     def test_env_not_mutated(self):
         """Regression: run_command must not permanently alter os.environ."""
-        from utils import run_command
+        from utils.processing import run_command
 
         original_env = os.environ.copy()
 
@@ -243,7 +243,7 @@ class TestRunCommand:
 
     def test_env_merged_into_subprocess(self):
         """Custom env vars should be passed to subprocess."""
-        from utils import run_command
+        from utils.processing import run_command
 
         with patch('subprocess.Popen') as mock_popen:
             mock_process = MagicMock()
@@ -261,7 +261,7 @@ class TestRunCommand:
 
     def test_nonzero_returncode_raises(self):
         """Non-zero exit codes must raise RuntimeError."""
-        from utils import run_command
+        from utils.processing import run_command
 
         with patch('subprocess.Popen') as mock_popen:
             mock_process = MagicMock()
@@ -294,10 +294,10 @@ class TestRunSynthstrip:
 
     def _run(self, cfg, **kwargs):
         """Call run_synthstrip with run_command patched; return the command string."""
-        import utils
+        from utils import processing
 
-        with patch.object(utils, 'run_command') as mock_run:
-            utils.run_synthstrip(cfg=cfg, **kwargs)
+        with patch.object(processing, 'run_command') as mock_run:
+            processing.run_synthstrip(cfg=cfg, **kwargs)
         return mock_run.call_args[0][0]
 
     def test_apptainer_binds_all_file_directories(self):
@@ -358,10 +358,10 @@ class TestRunSynthstrip:
 
     def test_unknown_runtime_raises(self):
         """An unsupported runtime should raise ValueError."""
-        import utils
+        from utils import processing
 
         with pytest.raises(ValueError, match='Unknown synthstrip_runtime'):
-            utils.run_synthstrip(
+            processing.run_synthstrip(
                 in_file='/in/a.nii.gz',
                 cfg={'synthstrip_runtime': 'podman'},
             )

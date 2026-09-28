@@ -11,13 +11,13 @@ import pytest
 # ---------------------------------------------------------------------------
 # Module-level mocks for heavy dependencies
 # ---------------------------------------------------------------------------
-# These modules import heavy neuroimaging libraries at the top level.  We mock
-# them here so that the tests can run in a lightweight CI environment.
+# These modules import optional heavy neuroimaging libraries at the top level.
+# Mock packages that are not part of the test environment; nibabel is a real CI
+# dependency because the tissue-mask tests exercise it directly.
 for _mod_name in [
     'ants',
     'antspynet',
     'antspynet.utilities',
-    'nibabel',
     'nilearn',
     'nilearn.image',
     'nilearn.masking',

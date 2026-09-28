@@ -326,9 +326,7 @@ def parse_args() -> argparse.Namespace:
         fallback = REPO_ROOT / 'configuration' / 'metrics.yml'
         args.patterns_file = fallback
     if args.qc_file is None and not args.no_qc:
-        candidates = (
-            REPO_ROOT / 'data' / 'qc' / 'manual_qc_modality.tsv',
-        )
+        candidates = (REPO_ROOT / 'data' / 'qc' / 'manual_qc_modality.tsv',)
         args.qc_file = next((path for path in candidates if path.exists()), None)
     elif args.qc_file is not None:
         args.qc_file = args.qc_file.expanduser().resolve()
@@ -337,9 +335,7 @@ def parse_args() -> argparse.Namespace:
         if args.output_dir
         else OUTPUT_DERIVATIVES_ROOT / 'mni_voxelwise_correlations'
     )
-    data_candidates = (
-        REPO_ROOT / 'data' / 'atlases',
-    )
+    data_candidates = (REPO_ROOT / 'data' / 'atlases',)
     if args.template_dseg is None:
         args.template_dseg = next(
             (
@@ -413,12 +409,8 @@ def main() -> None:
             else discover_sessions(args.derivatives_dir, subject)
         )
         subject_z_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in TISSUES}
-        subject_count_mats: dict[str, list[pd.DataFrame]] = {
-            tissue: [] for tissue in TISSUES
-        }
-        subject_proportion_mats: dict[str, list[pd.DataFrame]] = {
-            tissue: [] for tissue in TISSUES
-        }
+        subject_count_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in TISSUES}
+        subject_proportion_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in TISSUES}
         for session in sessions:
             metric_paths = metric_paths_for_session(
                 args.derivatives_dir,
@@ -571,7 +563,10 @@ def main() -> None:
                 continue
             all_labels = sorted({label for mat in mats for label in mat.index})
             stack = np.stack(
-                [mat.reindex(index=all_labels, columns=all_labels).to_numpy(dtype=float) for mat in mats]
+                [
+                    mat.reindex(index=all_labels, columns=all_labels).to_numpy(dtype=float)
+                    for mat in mats
+                ]
             )
             mean_z = pd.DataFrame(
                 np.nanmean(stack, axis=0),
@@ -638,9 +633,7 @@ def main() -> None:
             tissue=metric_registry_tissue(tissue),
         )
         full_labels = [
-            label
-            for label in processing_labels
-            if any(label in mat.index for mat in mats)
+            label for label in processing_labels if any(label in mat.index for mat in mats)
         ]
         observed_labels = set(full_labels)
         stack = np.stack(
@@ -649,7 +642,9 @@ def main() -> None:
                 for mat in mats
             ]
         )
-        full_mean_z = pd.DataFrame(np.nanmean(stack, axis=0), index=full_labels, columns=full_labels)
+        full_mean_z = pd.DataFrame(
+            np.nanmean(stack, axis=0), index=full_labels, columns=full_labels
+        )
         full_n_subjects = pd.DataFrame(
             np.sum(np.isfinite(stack), axis=0),
             index=full_labels,

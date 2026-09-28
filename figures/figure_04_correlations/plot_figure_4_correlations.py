@@ -214,7 +214,9 @@ def draw_similarity_panel(
     ax.tick_params(axis='x', labelsize=max(9.5, label_size - 0.4), length=3)
     ax.set_xlim(0.0, 1.0)
     ax.set_xticks([0, 0.25, 0.5, 0.75, 1.0])
-    ax.set_xlabel(f'GM-WM correlation-profile similarity ({method_label(method)})', fontweight='bold')
+    ax.set_xlabel(
+        f'GM-WM correlation-profile similarity ({method_label(method)})', fontweight='bold'
+    )
     ax.set_title(
         'GM/WM Correlation Structure Similarity',
         loc='left',
@@ -477,7 +479,9 @@ def main() -> None:
             ]
             missing = [path for path in expected_paths if not path.exists()]
             if missing:
-                message = 'Missing input(s), skipping voxel correlation figure: ' + ', '.join(map(str, missing))
+                message = 'Missing input(s), skipping voxel correlation figure: ' + ', '.join(
+                    map(str, missing)
+                )
                 if args.strict:
                     raise FileNotFoundError(message)
                 print(f'[WARN] {message}', flush=True)

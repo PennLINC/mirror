@@ -462,8 +462,7 @@ def resolve_average_metrics(
             LOGGER.info('%s: averaging %d QC-passing image(s)', spec.primary_label, len(paths))
     if missing:
         raise RuntimeError(
-            'No QC-passing MNI image was found for these primary metrics: '
-            + ', '.join(missing)
+            'No QC-passing MNI image was found for these primary metrics: ' + ', '.join(missing)
         )
     return resolved
 
@@ -637,7 +636,12 @@ def load_cached_panel(
             contributor_count = np.asarray(cache['contributor_count'], dtype=np.uint16)
             limits = tuple(float(value) for value in cache['limits'])
     except (OSError, KeyError, ValueError, json.JSONDecodeError) as exc:
-        LOGGER.warning('%s: ignoring unreadable average cache %s (%s)', metric.spec.primary_label, cache_path, exc)
+        LOGGER.warning(
+            '%s: ignoring unreadable average cache %s (%s)',
+            metric.spec.primary_label,
+            cache_path,
+            exc,
+        )
         return None
     tissue_mask = tissue_space.mask
     LOGGER.info('%s: loaded cached average map', metric.spec.primary_label)
@@ -874,12 +878,8 @@ def plot_group_panels(
 
     panel_area_width = 1.0 - 2.0 * style['xpad']
     panel_area_height = 1.0 - style['top_pad'] - style['bottom_pad']
-    panel_height = (
-        panel_area_height - style['row_gap'] * max(rows - 1, 0)
-    ) / rows
-    cell_width = (
-        panel_area_width - style['col_gap'] * max(width - 1, 0)
-    ) / width
+    panel_height = (panel_area_height - style['row_gap'] * max(rows - 1, 0)) / rows
+    cell_width = (panel_area_width - style['col_gap'] * max(width - 1, 0)) / width
     panel_width = min(cell_width, style['panel_width_cap'])
     total_width = panel_width * width + style['col_gap'] * max(width - 1, 0)
     x_start = 0.5 - total_width / 2.0
@@ -890,10 +890,7 @@ def plot_group_panels(
         panel_row = panel_index // width
         panel_column = panel_index % width
         x0 = x_start + panel_column * (panel_width + style['col_gap'])
-        y0 = (
-            style['bottom_pad']
-            + (rows - panel_row - 1) * (panel_height + style['row_gap'])
-        )
+        y0 = style['bottom_pad'] + (rows - panel_row - 1) * (panel_height + style['row_gap'])
         label = display_label(group_panels[panel_index].metric.spec)
         host_axis.text(
             x0 + panel_width / 2.0,
@@ -944,10 +941,7 @@ def group_inch_style(group: str) -> dict[str, float]:
 def group_size_inches(group: str, n_panels: int) -> tuple[float, float, int, int]:
     style = group_inch_style(group)
     rows, columns = group_grid_shape(group, n_panels)
-    panel_area_width = (
-        columns * PANEL_WIDTH_IN
-        + max(columns - 1, 0) * style['panel_gap']
-    )
+    panel_area_width = columns * PANEL_WIDTH_IN + max(columns - 1, 0) * style['panel_gap']
     width = max(panel_area_width + 2 * style['xpad'], style['min_width'])
     height = (
         style['top_pad']
@@ -1017,10 +1011,7 @@ def plot_group_panels_inches(
         color=color,
         transform=host_axis.transAxes,
     )
-    total_panel_width = (
-        columns * PANEL_WIDTH_IN
-        + max(columns - 1, 0) * style['panel_gap']
-    )
+    total_panel_width = columns * PANEL_WIDTH_IN + max(columns - 1, 0) * style['panel_gap']
     x_start = left + (group_width - total_panel_width) / 2.0
 
     for panel_index, panel in enumerate(group_panels):
@@ -1097,10 +1088,7 @@ def plot_figure(
             row_header_ratios.append(0.50)
         else:
             row_header_ratios.append(0.34)
-    height_ratios = [
-        header + rows
-        for header, rows in zip(row_header_ratios, row_panel_counts)
-    ]
+    height_ratios = [header + rows for header, rows in zip(row_header_ratios, row_panel_counts)]
     figure_width = 7.30
     figure_height = 0.22 + 0.99 * sum(height_ratios) + 0.13 * len(packed_rows)
     fig = plt.figure(figsize=(figure_width, figure_height), facecolor='white')
@@ -1161,8 +1149,7 @@ def plot_figure(
                 )
 
     bottom_used_width = max(
-        start_column + width
-        for _, _, start_column, width, _ in packed_rows[-1]
+        start_column + width for _, _, start_column, width, _ in packed_rows[-1]
     )
     if bottom_used_width < max_columns:
         colorbar_spec = outer[-1, bottom_used_width:max_columns]

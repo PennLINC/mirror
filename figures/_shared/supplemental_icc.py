@@ -91,10 +91,7 @@ def load_regional_icc(
     table['metric_key'] = table['metric_key'].astype(str)
     if tissue == 'wm':
         raw_features = sorted(table['feature'].astype(str).unique())
-        feature_map = {
-            feature: canonical_wm_bundle_name(feature)
-            for feature in raw_features
-        }
+        feature_map = {feature: canonical_wm_bundle_name(feature) for feature in raw_features}
         unmatched = sorted(
             feature for feature, canonical in feature_map.items() if canonical is None
         )
@@ -110,8 +107,8 @@ def load_regional_icc(
             flush=True,
         )
     table['metric'] = table['metric_key'].map(displays).fillna(table['metric_key'])
-    table['source_image'] = table['metric_key'].map(sources).fillna(
-        table.get('source_image', 'Other')
+    table['source_image'] = (
+        table['metric_key'].map(sources).fillna(table.get('source_image', 'Other'))
     )
     table = table.dropna(subset=[icc_column]).copy()
     duplicate = table.duplicated(['metric_key', 'feature'], keep=False)
@@ -255,9 +252,7 @@ def position_regional_guides(
         label_bottom = heatmap_ax.get_position().y0
 
     cbar_width = min(0.40, 0.62 * heatmap_ax.get_position().width)
-    cbar_x0 = heatmap_ax.get_position().x0 + 0.5 * (
-        heatmap_ax.get_position().width - cbar_width
-    )
+    cbar_x0 = heatmap_ax.get_position().x0 + 0.5 * (heatmap_ax.get_position().width - cbar_width)
     cbar_y0 = max(0.052, label_bottom - 0.030)
     cbar_ax.set_position([cbar_x0, cbar_y0, cbar_width, 0.015])
     legend.set_bbox_to_anchor((0.5, cbar_y0 - 0.030), transform=fig.transFigure)
@@ -324,9 +319,7 @@ def plot_regional_heatmap(
     metric_sources = [source.get(metric, 'Other') for metric in matrix.columns]
     family_colors = np.asarray(
         [
-            mpl.colors.to_rgba(
-                SOURCE_IMAGE_COLORS.get(item, SOURCE_IMAGE_COLORS['Other'])
-            )
+            mpl.colors.to_rgba(SOURCE_IMAGE_COLORS.get(item, SOURCE_IMAGE_COLORS['Other']))
             for item in metric_sources
         ]
     ).reshape(n_metrics, 1, 4)
@@ -376,9 +369,7 @@ def plot_regional_heatmap(
     cbar.set_ticks([0, 0.25, 0.5, 0.75, 1.0])
     cbar.ax.tick_params(labelsize=12.0, length=4)
 
-    observed_sources = [
-        key for key in SOURCE_IMAGE_COLORS if key in set(metric_sources)
-    ]
+    observed_sources = [key for key in SOURCE_IMAGE_COLORS if key in set(metric_sources)]
     handles = [
         Patch(
             facecolor=SOURCE_IMAGE_COLORS[key],
@@ -437,9 +428,7 @@ def plot_voxel_intervals(
     for ax, column_table in zip(axes, column_tables, strict=True):
         positions = np.arange(len(column_table))
         for position, (_, row) in zip(positions, column_table.iterrows(), strict=True):
-            color = SOURCE_IMAGE_COLORS.get(
-                row['source_image'], SOURCE_IMAGE_COLORS['Other']
-            )
+            color = SOURCE_IMAGE_COLORS.get(row['source_image'], SOURCE_IMAGE_COLORS['Other'])
             ax.add_patch(
                 Rectangle(
                     (row['q25'], position - 0.22),
@@ -502,9 +491,7 @@ def plot_voxel_intervals(
         fontweight='bold',
     )
 
-    sources = [
-        key for key in SOURCE_IMAGE_COLORS if key in set(summary['source_image'])
-    ]
+    sources = [key for key in SOURCE_IMAGE_COLORS if key in set(summary['source_image'])]
     handles = [
         Patch(
             facecolor=SOURCE_IMAGE_COLORS[key],

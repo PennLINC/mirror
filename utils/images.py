@@ -14,11 +14,7 @@ from nibabel.processing import resample_from_to
 def first_glob(patterns: Iterable[str | Path]) -> Path | None:
     """Return the lexicographically first unique match across glob patterns."""
 
-    matches = {
-        Path(match)
-        for pattern in patterns
-        for match in glob(str(pattern))
-    }
+    matches = {Path(match) for pattern in patterns for match in glob(str(pattern))}
     return min(matches) if matches else None
 
 

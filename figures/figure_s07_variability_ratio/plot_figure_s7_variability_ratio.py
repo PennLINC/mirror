@@ -55,9 +55,7 @@ def require_dependencies() -> None:
         if module is None
     ]
     if missing:
-        raise RuntimeError(
-            'Missing required Python packages: ' + ', '.join(missing)
-        )
+        raise RuntimeError('Missing required Python packages: ' + ', '.join(missing))
 
 
 def regional_input_path(icc_dir: Path, tissue: str, stat: str) -> Path:
@@ -166,9 +164,7 @@ def draw_ratio_panel(
     positions = np.arange(len(tissue_summary))
 
     for position, row in tissue_summary.iterrows():
-        color = SOURCE_IMAGE_COLORS.get(
-            row['source_image'], SOURCE_IMAGE_COLORS['Other']
-        )
+        color = SOURCE_IMAGE_COLORS.get(row['source_image'], SOURCE_IMAGE_COLORS['Other'])
         ax.add_patch(
             Rectangle(
                 (row['q25'], position - 0.20),

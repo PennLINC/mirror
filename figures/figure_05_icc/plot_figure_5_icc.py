@@ -89,7 +89,9 @@ def draw_interval_panel_no_numbers(
                 zorder=2,
             )
         )
-        ax.plot([median, median], [position - 0.23, position + 0.23], color='white', lw=1.8, zorder=3)
+        ax.plot(
+            [median, median], [position - 0.23, position + 0.23], color='white', lw=1.8, zorder=3
+        )
         ax.scatter([median], [position], s=24, facecolor='white', edgecolor='#2b2b2b', zorder=4)
         if label_side == 'right':
             label_x = 1.02
@@ -339,7 +341,9 @@ def plot_combined_icc(
         'F': fig.add_subplot(grid[2, 1]),
     }
 
-    draw_interval_panel_no_numbers(axes['A'], voxel_summary, 'wm', 'voxels', 'ICC(2,1) across WM voxels')
+    draw_interval_panel_no_numbers(
+        axes['A'], voxel_summary, 'wm', 'voxels', 'ICC(2,1) across WM voxels'
+    )
     draw_interval_panel_no_numbers(
         axes['B'],
         parcel_summary,
@@ -371,7 +375,9 @@ def plot_combined_icc(
         lower,
         upper,
     )
-    draw_scatter_panel_fixed(axes['F'], parcel_summary, 'cortical GM parcels', 'WM bundles', lower, upper)
+    draw_scatter_panel_fixed(
+        axes['F'], parcel_summary, 'cortical GM parcels', 'WM bundles', lower, upper
+    )
 
     for label, ax in axes.items():
         ax.text(
@@ -411,8 +417,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument('--analysis-set', choices=('primary', 'full'), default='primary')
     parser.add_argument('--stat', choices=('mean', 'median'), default='median')
     parser.add_argument('--mni-icc-dir', type=Path, default=default_mni_icc_dir())
-    parser.add_argument('--parcel-bundle-icc-dir', type=Path, default=default_parcel_bundle_icc_dir())
-    parser.add_argument('--patterns-file', type=Path, default=CODE_ROOT / 'configuration' / 'metrics.yml')
+    parser.add_argument(
+        '--parcel-bundle-icc-dir', type=Path, default=default_parcel_bundle_icc_dir()
+    )
+    parser.add_argument(
+        '--patterns-file', type=Path, default=CODE_ROOT / 'configuration' / 'metrics.yml'
+    )
     parser.add_argument(
         '--output-dir',
         type=Path,

@@ -117,10 +117,12 @@ def bootstrap_ci(values: np.ndarray, seed: int, n_boot: int = 10000) -> tuple[fl
 
 def summarize_for_plot(data: pd.DataFrame, effect: str) -> pd.DataFrame:
     rows = []
-    for group_index, ((metric_key, display_metric, source_image), group) in enumerate(data.groupby(
-        ['metric_key', 'display_metric', 'source_image'],
-        sort=False,
-    )):
+    for group_index, ((metric_key, display_metric, source_image), group) in enumerate(
+        data.groupby(
+            ['metric_key', 'display_metric', 'source_image'],
+            sort=False,
+        )
+    ):
         values = -group[effect].to_numpy(dtype=float)
         values = values[np.isfinite(values)]
         if values.size == 0:
@@ -180,11 +182,7 @@ def add_effect_categories(
     spec_by_label = {spec.label: spec for spec in specs}
     out = summary.copy()
     out['category'] = out['metric_key'].map(
-        lambda key: (
-            supplemental_family(spec_by_label[key])
-            if key in spec_by_label
-            else 'Other'
-        )
+        lambda key: supplemental_family(spec_by_label[key]) if key in spec_by_label else 'Other'
     )
     out['compact_metric'] = out.apply(
         lambda row: (
@@ -195,11 +193,7 @@ def add_effect_categories(
         axis=1,
     )
     registry_order = list(
-        dict.fromkeys(
-            supplemental_family(spec)
-            for spec in specs
-            if spec.source_image != 'g-ratio'
-        )
+        dict.fromkeys(supplemental_family(spec) for spec in specs if spec.source_image != 'g-ratio')
     )
     observed = set(out['category'])
     categories = [category for category in registry_order if category in observed]
@@ -274,9 +268,7 @@ def plot_faceted_effect_sizes(
                 vmax=color_limit,
             )
             for x_index, value in enumerate(values[0]):
-                annotation_color = (
-                    'white' if abs(value) >= 0.58 * color_limit else '#111111'
-                )
+                annotation_color = 'white' if abs(value) >= 0.58 * color_limit else '#111111'
                 ax.text(
                     x_index,
                     0,
@@ -297,9 +289,7 @@ def plot_faceted_effect_sizes(
             )
             ax.set_yticks([])
             ax.tick_params(length=0, pad=4)
-            category_title = CATEGORY_LABELS.get(
-                category, category.replace('_', ' ').title()
-            )
+            category_title = CATEGORY_LABELS.get(category, category.replace('_', ' ').title())
             if category == 'NODDI':
                 category_title = r'NODDI$^{\dagger}$'
             ax.set_title(
@@ -405,10 +395,32 @@ def plot_effect_sizes(
             zorder=2,
         )
         if np.isfinite(row['ci95_low']) and np.isfinite(row['ci95_high']):
-            ax.hlines(y_pos, row['ci95_low'], row['ci95_high'], color='#1f1f1f', linewidth=1.0, zorder=3)
-            ax.plot([row['ci95_low'], row['ci95_low']], [y_pos - 0.105, y_pos + 0.105], color='#1f1f1f', lw=0.8, zorder=3)
-            ax.plot([row['ci95_high'], row['ci95_high']], [y_pos - 0.105, y_pos + 0.105], color='#1f1f1f', lw=0.8, zorder=3)
-        ax.scatter([row['mean']], [y_pos], s=38, facecolor='white', edgecolor='#1f1f1f', linewidth=0.8, zorder=5)
+            ax.hlines(
+                y_pos, row['ci95_low'], row['ci95_high'], color='#1f1f1f', linewidth=1.0, zorder=3
+            )
+            ax.plot(
+                [row['ci95_low'], row['ci95_low']],
+                [y_pos - 0.105, y_pos + 0.105],
+                color='#1f1f1f',
+                lw=0.8,
+                zorder=3,
+            )
+            ax.plot(
+                [row['ci95_high'], row['ci95_high']],
+                [y_pos - 0.105, y_pos + 0.105],
+                color='#1f1f1f',
+                lw=0.8,
+                zorder=3,
+            )
+        ax.scatter(
+            [row['mean']],
+            [y_pos],
+            s=38,
+            facecolor='white',
+            edgecolor='#1f1f1f',
+            linewidth=0.8,
+            zorder=5,
+        )
         if show_subject_points:
             metric_values = display_effect_values(
                 data.loc[data['metric_key'] == row['metric_key'], effect].to_numpy(dtype=float)

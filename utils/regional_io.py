@@ -19,8 +19,14 @@ from utils.paths import CODE_ROOT, OUTPUT_DERIVATIVES_ROOT, SOURCE_DERIVATIVES_R
 DEFAULT_QC_FILE = CODE_ROOT / 'data' / 'qc' / 'manual_qc_modality.tsv'
 QC_MODES = ('metricqc',)
 DEFAULT_WM_GLOBS = [
-    str(SOURCE_DERIVATIVES_ROOT / 'qsirecon/derivatives/qsirecon-*/sub-*/ses-*/dwi/sub-*_ses-*_*_scalarstats.tsv'),
-    str(OUTPUT_DERIVATIVES_ROOT / 'bundle_myelin_stats/sub-*/ses-*/dwi/sub-*_ses-*_acq-HBCD75_run-01_space-T1w_model-*_scalarstats.tsv'),
+    str(
+        SOURCE_DERIVATIVES_ROOT
+        / 'qsirecon/derivatives/qsirecon-*/sub-*/ses-*/dwi/sub-*_ses-*_*_scalarstats.tsv'
+    ),
+    str(
+        OUTPUT_DERIVATIVES_ROOT
+        / 'bundle_myelin_stats/sub-*/ses-*/dwi/sub-*_ses-*_acq-HBCD75_run-01_space-T1w_model-*_scalarstats.tsv'
+    ),
 ]
 DEFAULT_DKT_GLOBS = [
     str(
@@ -351,10 +357,7 @@ def collect_bundle_scalarstats(input_globs: list[str], patterns_file: Path) -> p
     out['session_id'] = out['session_id'].astype(str)
     out['bundle'] = out['bundle'].astype(str)
     raw_bundle_names = sorted(out['bundle'].unique())
-    bundle_name_map = {
-        bundle: canonical_wm_bundle_name(bundle)
-        for bundle in raw_bundle_names
-    }
+    bundle_name_map = {bundle: canonical_wm_bundle_name(bundle) for bundle in raw_bundle_names}
     unmatched = sorted(bundle for bundle, canonical in bundle_name_map.items() if canonical is None)
     if unmatched:
         print(

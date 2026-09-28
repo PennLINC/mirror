@@ -20,7 +20,16 @@ from utils.bundles import resolve_tckmap_command, summarize_bundles  # noqa: E40
 from utils.metrics import build_metric_specs, flatten_metric_patterns, metric_specs_for_analysis  # noqa: E402
 from utils.paths import OUTPUT_DERIVATIVES_ROOT, SOURCE_DERIVATIVES_ROOT  # noqa: E402
 
-T1W_BUNDLE_GROUPS = {'ihMT', 'MESE', 'MEGRE', 'MP2RAGE', 'T1w/T2w Ratio', 'G-Ratio', 'Q-Ratio', 'QSM'}
+T1W_BUNDLE_GROUPS = {
+    'ihMT',
+    'MESE',
+    'MEGRE',
+    'MP2RAGE',
+    'T1w/T2w Ratio',
+    'G-Ratio',
+    'Q-Ratio',
+    'QSM',
+}
 
 BUNDLE_RE = re.compile(r'_bundle-(?P<bundle>.+?)_streamlines\.tck(?:\.gz)?$')
 UNDERSCORE_PREFIXES = (

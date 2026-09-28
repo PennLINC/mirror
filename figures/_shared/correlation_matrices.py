@@ -244,9 +244,7 @@ def position_matrix_guides(grid, legend) -> None:
     ]
     if tick_boxes:
         label_bottom_display = min(box.y0 for box in tick_boxes)
-        label_bottom = grid.fig.transFigure.inverted().transform(
-            (0, label_bottom_display)
-        )[1]
+        label_bottom = grid.fig.transFigure.inverted().transform((0, label_bottom_display))[1]
     else:
         label_bottom = grid.ax_heatmap.get_position().y0
 

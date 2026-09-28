@@ -51,7 +51,7 @@ def parse_track_id(track_id: str) -> ParsedTrack:
     side_match = re.search(r'(?<=[a-z0-9])([LR])(?=_|$)', raw_bundle)
     side = side_match.group(1) if side_match else None
     if side_match:
-        raw_bundle = raw_bundle[: side_match.start()] + raw_bundle[side_match.end():]
+        raw_bundle = raw_bundle[: side_match.start()] + raw_bundle[side_match.end() :]
 
     return ParsedTrack(
         category=category,

@@ -185,7 +185,16 @@ def infer_family(group: str, pattern_key: str) -> str:
             or pattern_key.startswith('OD')
         ):
             return 'NODDI'
-        if pattern_key in {'NG', 'NG Parallel', 'NG Perpendicular', 'PA', 'PAth', 'RTAP', 'RTOP', 'RTPP'}:
+        if pattern_key in {
+            'NG',
+            'NG Parallel',
+            'NG Perpendicular',
+            'PA',
+            'PAth',
+            'RTAP',
+            'RTOP',
+            'RTPP',
+        }:
             return 'MAPMRI'
         if pattern_key.startswith('GQI '):
             return 'GQI'
@@ -296,9 +305,7 @@ def is_gm_noddi_pattern(group: str, pattern_key: str) -> bool:
 
 
 def noddi_hybrid_label(pattern_key: str) -> str:
-    return display_label(
-        pattern_key.replace(' (GM; ', ' (').replace(' (GM)', '')
-    )
+    return display_label(pattern_key.replace(' (GM; ', ' (').replace(' (GM)', ''))
 
 
 def tissues_for(group: str, pattern_key: str) -> tuple[str, ...]:
@@ -387,11 +394,7 @@ def metric_specs_for_analysis(
     analysis_set: str,
     tissue: str | None = None,
 ) -> list[MetricSpec]:
-    candidates = [
-        spec
-        for spec in specs
-        if tissue is None or tissue in spec.tissues
-    ]
+    candidates = [spec for spec in specs if tissue is None or tissue in spec.tissues]
     if analysis_set == 'primary':
         return primary_metric_specs(specs, tissue=tissue)
     if analysis_set in {'full', 'expanded'}:
