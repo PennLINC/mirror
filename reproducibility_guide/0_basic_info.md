@@ -63,7 +63,7 @@ OpenNeuro accession forthcoming
 
 ### GitHub Repository
 
-<https://github.com/PennLINC/nibs>
+<https://github.com/PennLINC/mirror>
 
 ### Slack Channel (for internal PennLINC)
 

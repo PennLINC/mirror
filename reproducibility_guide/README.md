@@ -19,7 +19,12 @@ Open `reproducibility_guide/_build/html/index.html` in a browser. The generated
 
 ## Publish
 
-The book is ready for a standard Jupyter Book GitHub Pages workflow. Publishing
-requires a workflow under `.github/workflows/`; it is intentionally not added
-as part of this guide-only change.
+The workflow at
+`.github/workflows/deploy_reproducibility_guide.yml` builds and publishes the
+book when guide files are pushed to `main`. It can also be run manually from
+the repository's **Actions** tab.
 
+Before the first deployment, a repository administrator must open
+**Settings → Pages** and select **GitHub Actions** as the source under **Build
+and deployment**. Subsequent pushes that change `reproducibility_guide/` will
+update the published site automatically.

@@ -7,7 +7,7 @@ execute:
   execute_notebooks: "off"
 
 repository:
-  url: https://github.com/PennLINC/nibs
+  url: https://github.com/PennLINC/mirror
   path_to_book: reproducibility_guide
   branch: main
 
@@ -20,3 +20,5 @@ html:
 sphinx:
   config:
     html_show_copyright: false
+    exclude_patterns:
+      - README.md

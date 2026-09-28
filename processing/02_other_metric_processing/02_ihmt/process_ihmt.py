@@ -475,6 +475,12 @@ def process_run(layout, run_data, out_dir, temp_dir):
         dismiss_entities=['acquisition', 'mt'],
     )
 
+    # PROVENANCE ONLY: do not use MTssat or MTssatB1sq from this workflow.
+    # The historical modified ihmt_proc API incorrectly populated both from
+    # MTdsat. They remain outputs to preserve the manuscript-era processing
+    # record but are excluded from configuration/metrics.yml. See issue #22:
+    # https://github.com/PennLINC/mirror/issues/22
+
     cli.main(
         ihmt=concat_ihmt_t1space,
         mask=brain_mask_t1space,

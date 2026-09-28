@@ -32,6 +32,15 @@ The replication described here does not run:
 Those workflows remain in the repository for provenance and for users who need
 to regenerate the released source data.
 
+```{warning}
+Do not use the precomputed `MTssat` or `MTssat-B1c` maps. The modified
+`ihmt_proc` version used by the source-scalar workflow incorrectly calculated
+both from the dual-frequency saturation estimate. They are excluded from the
+analysis metric registry and therefore from both `primary` and `full` analysis
+modes. The retained files are processing provenance only; see
+[MIRROR issue 22](https://github.com/PennLINC/mirror/issues/22).
+```
+
 ## First replicated step
 
 Begin with:
