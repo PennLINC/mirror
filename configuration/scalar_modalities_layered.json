@@ -1,0 +1,321 @@
+{
+    "DKI Micro AD": [
+        "dMRI"
+    ],
+    "DKI Micro ADE": [
+        "dMRI"
+    ],
+    "DKI Micro AWF": [
+        "dMRI"
+    ],
+    "DKI Micro AxonalD": [
+        "dMRI"
+    ],
+    "DKI Micro KFA": [
+        "dMRI"
+    ],
+    "DKI Micro MD": [
+        "dMRI"
+    ],
+    "DKI Micro RD": [
+        "dMRI"
+    ],
+    "DKI Micro RDE": [
+        "dMRI"
+    ],
+    "DKI Micro Tortuosity": [
+        "dMRI"
+    ],
+    "DKI AD": [
+        "dMRI"
+    ],
+    "DKI AK": [
+        "dMRI"
+    ],
+    "DKI KFA": [
+        "dMRI"
+    ],
+    "DKI MD": [
+        "dMRI"
+    ],
+    "DKI MK": [
+        "dMRI"
+    ],
+    "DKI MKT": [
+        "dMRI"
+    ],
+    "DKI RD": [
+        "dMRI"
+    ],
+    "DKI RK": [
+        "dMRI"
+    ],
+    "DKI Tensor FA": [
+        "dMRI"
+    ],
+    "DSI Studio GQI GFA": [
+        "dMRI"
+    ],
+    "DSI Studio GQI ISO": [
+        "dMRI"
+    ],
+    "DSI Studio GQI QA": [
+        "dMRI"
+    ],
+    "DSI Studio Tensor AD": [
+        "dMRI"
+    ],
+    "DSI Studio Tensor FA": [
+        "dMRI"
+    ],
+    "DSI Studio Tensor MD": [
+        "dMRI"
+    ],
+    "DSI Studio Tensor RD": [
+        "dMRI"
+    ],
+    "NODDI ICVF Modulated": [
+        "dMRI"
+    ],
+    "NODDI ICVF": [
+        "dMRI"
+    ],
+    "NODDI ISOVF": [
+        "dMRI"
+    ],
+    "NODDI OD Modulated": [
+        "dMRI"
+    ],
+    "NODDI OD": [
+        "dMRI"
+    ],
+    "NODDI ICVF Modulated (GM)": [
+        "dMRI"
+    ],
+    "NODDI ICVF (GM)": [
+        "dMRI"
+    ],
+    "NODDI ISOVF (GM)": [
+        "dMRI"
+    ],
+    "NODDI OD Modulated (GM)": [
+        "dMRI"
+    ],
+    "NODDI OD (GM)": [
+        "dMRI"
+    ],
+    "TORTOISE MAPMRI NG": [
+        "dMRI"
+    ],
+    "TORTOISE MAPMRI NG Par": [
+        "dMRI"
+    ],
+    "TORTOISE MAPMRI NG Perp": [
+        "dMRI"
+    ],
+    "TORTOISE MAPMRI PA": [
+        "dMRI"
+    ],
+    "TORTOISE MAPMRI PATH": [
+        "dMRI"
+    ],
+    "TORTOISE MAPMRI RTAP": [
+        "dMRI"
+    ],
+    "TORTOISE MAPMRI RTOP": [
+        "dMRI"
+    ],
+    "TORTOISE MAPMRI RTPP": [
+        "dMRI"
+    ],
+    "TORTOISE MAPMRI AD": [
+        "dMRI"
+    ],
+    "TORTOISE MAPMRI FA": [
+        "dMRI"
+    ],
+    "TORTOISE MAPMRI LI": [
+        "dMRI"
+    ],
+    "TORTOISE MAPMRI RD": [
+        "dMRI"
+    ],
+    "TORTOISE MAPMRI MD": [
+        "dMRI"
+    ],
+    "TORTOISE Tensor AD": [
+        "dMRI"
+    ],
+    "TORTOISE Tensor FA": [
+        "dMRI"
+    ],
+    "TORTOISE Tensor LI": [
+        "dMRI"
+    ],
+    "TORTOISE Tensor RD": [
+        "dMRI"
+    ],
+    "TORTOISE Tensor MD": [
+        "dMRI"
+    ],
+    "ihMTw": [
+        "ihMTRAGE"
+    ],
+    "ihMTR": [
+        "ihMTRAGE"
+    ],
+    "MTR": [
+        "ihMTRAGE"
+    ],
+    "ihMTsat": [
+        "R1",
+        "ihMTRAGE"
+    ],
+    "ihMTsat-B1c": [
+        "R1",
+        "ihMTRAGE",
+        "B1+"
+    ],
+    "MTdsat": [
+        "R1",
+        "ihMTRAGE"
+    ],
+    "MTssat": [
+        "R1",
+        "ihMTRAGE"
+    ],
+    "MTdsat-B1c": [
+        "R1",
+        "ihMTRAGE",
+        "B1+"
+    ],
+    "MTssat-B1c": [
+        "R1",
+        "ihMTRAGE",
+        "B1+"
+    ],
+    "R2": [
+        "MESE"
+    ],
+    "R2*-E5": [
+        "MEGRE"
+    ],
+    "R2*-E4": [
+        "MEGRE"
+    ],
+    "R2'-E5": [
+        "R2*-E5",
+        "R2"
+    ],
+    "R2'-E4": [
+        "R2*-E4",
+        "R2"
+    ],
+    "R1": [
+        "MP2RAGE"
+    ],
+    "R1-B1c": [
+        "MP2RAGE",
+        "B1+"
+    ],
+    "MPRAGE-T1w/T2w": [
+        "MPRAGE T1w",
+        "SPACE T2w"
+    ],
+    "SPACE-T1w/T2w": [
+        "SPACE T1w",
+        "SPACE T2w"
+    ],
+    "G-ihMTsat": [
+        "ihMTsat-B1c",
+        "NODDI ICVF",
+        "NODDI ISOVF"
+    ],
+    "G-ihMTR": [
+        "ihMTR",
+        "NODDI ICVF",
+        "NODDI ISOVF"
+    ],
+    "Q-Ratio-E5": [
+        "R2*-E5",
+        "R1"
+    ],
+    "Q-Ratio-E5-B1c": [
+        "R2*-E5",
+        "R1-B1c"
+    ],
+    "Q-Ratio-E4": [
+        "R2*-E4",
+        "R1"
+    ],
+    "Q-Ratio-E4-B1c": [
+        "R2*-E4",
+        "R1-B1c"
+    ],
+    "QSM-SEPIA-E5-χ": [
+        "MEGRE"
+    ],
+    "QSM-SEPIA-E4-χ": [
+        "MEGRE"
+    ],
+    "QSM-X-R2'-E5-χ": [
+        "MEGRE",
+        "R2'-E5"
+    ],
+    "QSM-X-R2'-E4-χ": [
+        "MEGRE",
+        "R2'-E4"
+    ],
+    "QSM-X-R2'-E5-Para": [
+        "MEGRE",
+        "R2'-E5"
+    ],
+    "QSM-X-R2'-E4-Para": [
+        "MEGRE",
+        "R2'-E4"
+    ],
+    "QSM-X-R2'-E5-Dia": [
+        "MEGRE",
+        "R2'-E5"
+    ],
+    "QSM-X-R2'-E4-Dia": [
+        "MEGRE",
+        "R2'-E4"
+    ],
+    "QSM-X-R2pnet-E5-χ": [
+        "MEGRE"
+    ],
+    "QSM-X-R2pnet-E4-χ": [
+        "MEGRE"
+    ],
+    "QSM-X-R2pnet-E5-Para": [
+        "MEGRE"
+    ],
+    "QSM-X-R2pnet-E4-Para": [
+        "MEGRE"
+    ],
+    "QSM-X-R2pnet-E5-Dia": [
+        "MEGRE"
+    ],
+    "QSM-X-R2pnet-E4-Dia": [
+        "MEGRE"
+    ],
+    "QSM-X-R2*-E5-χ": [
+        "MEGRE"
+    ],
+    "QSM-X-R2*-E4-χ": [
+        "MEGRE"
+    ],
+    "QSM-X-R2*-E5-Para": [
+        "MEGRE"
+    ],
+    "QSM-X-R2*-E4-Para": [
+        "MEGRE"
+    ],
+    "QSM-X-R2*-E5-Dia": [
+        "MEGRE"
+    ],
+    "QSM-X-R2*-E4-Dia": [
+        "MEGRE"
+    ]
+}
