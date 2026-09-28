@@ -33,6 +33,8 @@ derivatives:
   qsirecon_dipydki: /mnt/c/Users/tsalo/Documents/datasets/nibs/derivatives/qsirecon/derivatives/qsirecon-DIPYDKI
   qsirecon_noddi: /mnt/c/Users/tsalo/Documents/datasets/nibs/derivatives/qsirecon/derivatives/qsirecon-NODDI
   qsirecon_dsistudio: /mnt/c/Users/tsalo/Documents/datasets/nibs/derivatives/qsirecon/derivatives/qsirecon-DSIStudio
+  # Outputs and intermediates of fun-analyses/ B0-orientation scripts.
+  b0_orientation: /mnt/c/Users/tsalo/Documents/datasets/nibs-b0-orientation
 
 # Container runtime used for SynthStrip skull-stripping. Either "apptainer"
 # (uses the apptainer.synthstrip .sif below) or "docker" (uses the
