@@ -1,0 +1,12 @@
+.bd-main .bd-content .bd-article-container {
+  max-width: 68rem;
+}
+
+code {
+  overflow-wrap: anywhere;
+}
+
+table.docutils {
+  width: 100%;
+}
+

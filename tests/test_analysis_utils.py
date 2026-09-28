@@ -1,40 +1,13 @@
 """Tests for analysis utilities -- Tier 1 (unit).
 
-Covers:
-- analysis/calculate_brain_mask_dice.py :: dice
-- analysis/utils.py :: convert_to_multindex
+Covers shared analysis utilities used by active figure code.
 """
-
-import sys
-from unittest.mock import MagicMock
 
 import numpy as np
 import pandas as pd
 import pytest
 
-# Mock heavy deps that calculate_brain_mask_dice.py imports at top-level
-sys.modules.setdefault('ants', MagicMock())
-
-from calculate_brain_mask_dice import dice  # noqa: E402
-
-# convert_to_multindex lives in analysis/utils.py, but processing/utils.py
-# also exists on pythonpath under the same name.  Use importlib to load the
-# analysis version explicitly.
-import importlib.util
-import os
-
-_analysis_utils_path = os.path.join(os.path.dirname(__file__), '..', 'analysis', 'utils.py')
-_spec = importlib.util.spec_from_file_location('analysis_utils', _analysis_utils_path)
-_analysis_utils = importlib.util.module_from_spec(_spec)
-# Provide mocks for optional deps before executing the module
-sys.modules.setdefault('missingno', MagicMock())
-sys.modules.setdefault('missingno.utils', MagicMock())
-sys.modules.setdefault('matplotlib', MagicMock())
-sys.modules.setdefault('matplotlib.pyplot', MagicMock())
-sys.modules.setdefault('matplotlib.gridspec', MagicMock())
-_spec.loader.exec_module(_analysis_utils)
-
-convert_to_multindex = _analysis_utils.convert_to_multindex
+from utils.analysis import convert_to_multindex, dice
 
 
 # ===================================================================

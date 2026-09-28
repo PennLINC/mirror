@@ -1,0 +1,12 @@
+format: jb-book
+root: 0_basic_info
+chapters:
+  - file: 1_replication_scope
+  - file: 2_setup
+  - file: 3_registration_and_qc
+  - file: 4_analysis_inputs
+  - file: 5_analyses
+  - file: 6_figures_and_tables
+  - file: 7_outputs_and_validation
+  - file: 8_troubleshooting
+  - file: 9_command_checklist

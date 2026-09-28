@@ -22,14 +22,13 @@ _PARSER_MODULES = [
     'process_qsm',
     'process_g_ratio',
     'process_q_ratio',
-    'warp_megre_to_mni',
-    'generate_myelin_reports',
+    'generate_scalar_reports',
 ]
 
 # The processing modules loop over every subject when --subject-id is omitted,
 # so the argument is optional there.  Report generation targets one subject and
 # still requires it.
-_SUBJECT_ID_REQUIRED = {'generate_myelin_reports'}
+_SUBJECT_ID_REQUIRED = {'generate_scalar_reports'}
 
 
 def _import_get_parser(module_name):
@@ -53,7 +52,7 @@ def _import_get_parser(module_name):
         },
     }
 
-    with patch('utils.load_config', return_value=fake_cfg):
+    with patch('utils.processing.load_config', return_value=fake_cfg):
         # Remove cached module so the fresh import picks up the patch
         if module_name in sys.modules:
             del sys.modules[module_name]

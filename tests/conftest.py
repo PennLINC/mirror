@@ -1,10 +1,23 @@
-"""Shared fixtures for the NIBS test suite."""
+"""Shared fixtures for the MIRROR test suite."""
 
 import os
+import sys
+from pathlib import Path
 from unittest.mock import MagicMock
 
 import numpy as np
 import pytest
+
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+PROCESSING_SCRIPT_DIRS = sorted(
+    path.parent
+    for path in (REPO_ROOT / 'processing').glob('**/*.py')
+    if path.name != '__init__.py'
+)
+for script_dir in PROCESSING_SCRIPT_DIRS:
+    if str(script_dir) not in sys.path:
+        sys.path.insert(0, str(script_dir))
 
 
 # ---------------------------------------------------------------------------

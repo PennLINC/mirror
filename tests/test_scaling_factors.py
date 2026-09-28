@@ -1,4 +1,4 @@
-"""Tests for processing/process_g_ratio_scaling_factors.py -- Tier 1 (unit)."""
+"""Tests for g-ratio scaling-factor processing -- Tier 1 (unit)."""
 
 import sys
 from unittest.mock import MagicMock, patch
@@ -13,7 +13,7 @@ sys.modules.setdefault('nilearn.masking', MagicMock())
 sys.modules.setdefault('nilearn.plotting', MagicMock())
 
 with patch(
-    'utils.load_config',
+    'utils.processing.load_config',
     return_value={
         'code_dir': '/fake/code',
         'bids_dir': '/fake/bids',

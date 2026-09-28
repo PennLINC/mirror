@@ -1,0 +1,49 @@
+{
+  "profile_description": "Generic HPC defaults; edit project_root and software paths for the target cluster.",
+  "project_root": "/cbica/projects/nibs",
+  "bids_dir": "dset",
+  "code_dir": "auto",
+  "work_dir": "/cbica/comp_space/nibs",
+  "source_derivatives_dir": "derivatives",
+  "run_name": "mirror_data_descriptor",
+  "output_derivatives_dir": "derivatives/mirror_data_descriptor",
+  "logs_dir": "auto",
+  "sourcedata": {
+    "root": "sourcedata",
+    "scitran": "sourcedata/scitran/bbl/NIBS_857664"
+  },
+  "derivatives": {
+    "smriprep": "smriprep",
+    "pymp2rage": "pymp2rage",
+    "ihmt": "ihmt",
+    "mese": "mese",
+    "megre": "megre",
+    "qsm": "qsm",
+    "t1wt2w_ratio": "t1wt2w_ratio",
+    "g_ratio": "g_ratio",
+    "myelin": "myelin",
+    "q_ratio": "q_ratio",
+    "qsiprep": "qsiprep",
+    "qsirecon_dipydki": "qsirecon/derivatives/qsirecon-DIPYDKI",
+    "qsirecon_noddi": "qsirecon/derivatives/qsirecon-NODDI",
+    "qsirecon_dsistudio": "qsirecon/derivatives/qsirecon-DSIStudio"
+  },
+  "synthstrip_runtime": "apptainer",
+  "apptainer": {
+    "fmriprep": "apptainer/fmriprep-25.0.0.sif",
+    "qsiprep": "apptainer/qsiprep-26.0.0.sif",
+    "qsirecon": "apptainer/qsirecon-26.0.0.sif",
+    "synthstrip": "apptainer/synthstrip-1.7.sif"
+  },
+  "docker": {
+    "synthstrip": "freesurfer/synthstrip:1.7"
+  },
+  "freesurfer": {
+    "subjects_dir": "derivatives/smriprep/sourcedata/freesurfer",
+    "license": "tokens/freesurfer_license.txt"
+  },
+  "software": {
+    "qsm_root": "software/qsm",
+    "sepia_home": "software/qsm/sepia-1.2.2.6"
+  }
+}

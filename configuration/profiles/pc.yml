@@ -1,0 +1,63 @@
+# Lab-PC machine and manuscript-run configuration.
+project_root: /mnt/c/Users/tsalo/Documents/datasets/nibs
+
+# Raw BIDS dataset (contains sub-*/ directly).
+bids_dir: /mnt/c/Users/tsalo/Documents/datasets/nibs
+# Resolve the repository checkout dynamically so renaming or moving it is safe.
+code_dir: auto
+# Scratch/working directory for intermediate files (SEPIA + chi-sep inputs/outputs).
+work_dir: /mnt/c/Users/tsalo/Documents/datasets/nibs-work
+
+# Reusable preprocessing and source-scalar derivatives. These inputs are never
+# written by the registration/analysis workflow.
+source_derivatives_dir: /mnt/c/Users/tsalo/Documents/datasets/nibs/derivatives
+
+# Change these two values for an independent replication.
+run_name: mirror_data_descriptor
+output_derivatives_dir: /mnt/c/Users/tsalo/Documents/datasets/nibs/derivatives/mirror_data_descriptor
+logs_dir: auto
+
+sourcedata:
+  root: /mnt/c/Users/tsalo/Documents/datasets/nibs/sourcedata
+  scitran: /mnt/c/Users/tsalo/Documents/datasets/nibs/sourcedata/scitran/bbl/NIBS_857664
+
+derivatives:
+  smriprep: smriprep
+  pymp2rage: pymp2rage
+  ihmt: ihmt
+  mese: mese
+  megre: megre
+  qsm: qsm
+  t1wt2w_ratio: t1wt2w_ratio
+  g_ratio: g_ratio
+  myelin: myelin
+  q_ratio: q_ratio
+  qsiprep: qsiprep
+  qsirecon_dipydki: qsirecon/derivatives/qsirecon-DIPYDKI
+  qsirecon_noddi: qsirecon/derivatives/qsirecon-NODDI
+  qsirecon_dsistudio: qsirecon/derivatives/qsirecon-DSIStudio
+
+# Container runtime used for SynthStrip skull-stripping. Either "apptainer"
+# (uses the apptainer.synthstrip .sif below) or "docker" (uses the
+# docker.synthstrip image tag below).
+synthstrip_runtime: docker
+
+apptainer:
+  fmriprep: /mnt/c/Users/tsalo/Documents/datasets/nibs/apptainer/fmriprep-25.0.0.sif
+  qsiprep: /mnt/c/Users/tsalo/Documents/datasets/nibs/apptainer/qsiprep-26.0.0.sif
+  qsirecon: /mnt/c/Users/tsalo/Documents/datasets/nibs/apptainer/qsirecon-26.0.0.sif
+  # Used by process_mese.py / process_ihmt.py for SynthStrip skull-stripping.
+  # Requires a local singularity/apptainer install and this .sif image.
+  synthstrip: /mnt/c/Users/tsalo/Documents/datasets/nibs/derivatives/apptainer/synthstrip-1.7.sif
+
+docker:
+  # Used to locally test processing on a machine without Apptainer
+  synthstrip: freesurfer/synthstrip:1.7
+
+freesurfer:
+  subjects_dir: /mnt/c/Users/tsalo/Documents/datasets/nibs/derivatives/smriprep/sourcedata/freesurfer
+  license: /mnt/c/Users/tsalo/Documents/datasets/nibs/derivatives/freesurfer_license.txt
+
+software:
+  qsm_root: /mnt/c/Users/tsalo/Documents/linc/qsm-software
+  sepia_home: /mnt/c/Users/tsalo/Documents/linc/qsm-software/sepia-1.2.2.6

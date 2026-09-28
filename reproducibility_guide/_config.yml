@@ -1,0 +1,24 @@
+title: MIRROR Reproducibility Guide
+author: Steven L. Meisler
+logo: logo.png
+description: Project information and instructions for reproducing the MIRROR data descriptor analyses
+
+execute:
+  execute_notebooks: "off"
+
+repository:
+  url: https://github.com/PennLINC/mirror
+  path_to_book: reproducibility_guide
+  branch: main
+
+html:
+  use_issues_button: true
+  use_repository_button: true
+  extra_css:
+    - custom.css
+
+sphinx:
+  config:
+    html_show_copyright: false
+    exclude_patterns:
+      - README.md

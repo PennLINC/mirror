@@ -1,0 +1,2073 @@
+{
+  "version": 1,
+  "description": "Authoritative MIRROR metric registry. JSON syntax is valid YAML.",
+  "analysis_sets": {
+    "primary": 27,
+    "expanded": 93
+  },
+  "family_colors": {
+    "dMRI": "#3F6FA8",
+    "QSM": "#B13F82",
+    "T1w/T2w": "#B9A224",
+    "ihMT": "#268A4B",
+    "g-ratio": "#555555",
+    "R1": "#E86F2A",
+    "MESE": "#0098A7",
+    "MEGRE": "#7B4D9E",
+    "Other": "#999999"
+  },
+  "metrics": [
+    {
+      "id": "dmri_dki_micro_ad",
+      "group": "dMRI",
+      "pattern_key": "DKI Micro AD",
+      "label": "DKI Micro AD",
+      "primary_label": "DKI Micro AD",
+      "plot_label": "DKI Micro AD",
+      "family": "DKI Micro",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dkimicro_param-ad_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 1
+    },
+    {
+      "id": "dmri_dki_micro_ade",
+      "group": "dMRI",
+      "pattern_key": "DKI Micro ADE",
+      "label": "DKI Micro ADE",
+      "primary_label": "DKI Micro ADE",
+      "plot_label": "DKI Micro ADE",
+      "family": "DKI Micro",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dkimicro_param-ade_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 2
+    },
+    {
+      "id": "dmri_dki_micro_awf",
+      "group": "dMRI",
+      "pattern_key": "DKI Micro AWF",
+      "label": "AWF",
+      "primary_label": "AWF",
+      "plot_label": "AWF",
+      "family": "DKI Micro",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dkimicro_param-awf_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 6,
+      "expanded_order": 3
+    },
+    {
+      "id": "dmri_dki_micro_axonald",
+      "group": "dMRI",
+      "pattern_key": "DKI Micro AxonalD",
+      "label": "DKI Micro AxonalD",
+      "primary_label": "DKI Micro AxonalD",
+      "plot_label": "DKI Micro AxonalD",
+      "family": "DKI Micro",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dkimicro_param-axonald_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 4
+    },
+    {
+      "id": "dmri_dki_micro_kfa",
+      "group": "dMRI",
+      "pattern_key": "DKI Micro KFA",
+      "label": "DKI Micro KFA",
+      "primary_label": "DKI Micro KFA",
+      "plot_label": "DKI Micro KFA",
+      "family": "DKI Micro",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dkimicro_param-kfa_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 5
+    },
+    {
+      "id": "dmri_dki_micro_md",
+      "group": "dMRI",
+      "pattern_key": "DKI Micro MD",
+      "label": "DKI Micro MD",
+      "primary_label": "DKI Micro MD",
+      "plot_label": "DKI Micro MD",
+      "family": "DKI Micro",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dkimicro_param-md_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 6
+    },
+    {
+      "id": "dmri_dki_micro_rd",
+      "group": "dMRI",
+      "pattern_key": "DKI Micro RD",
+      "label": "DKI Micro RD",
+      "primary_label": "DKI Micro RD",
+      "plot_label": "DKI Micro RD",
+      "family": "DKI Micro",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dkimicro_param-rd_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 7
+    },
+    {
+      "id": "dmri_dki_micro_rde",
+      "group": "dMRI",
+      "pattern_key": "DKI Micro RDE",
+      "label": "DKI Micro RDE",
+      "primary_label": "DKI Micro RDE",
+      "plot_label": "DKI Micro RDE",
+      "family": "DKI Micro",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dkimicro_param-rde_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 8
+    },
+    {
+      "id": "dmri_dki_micro_tortuosity",
+      "group": "dMRI",
+      "pattern_key": "DKI Micro Tortuosity",
+      "label": "DKI Micro Tortuosity",
+      "primary_label": "DKI Micro Tortuosity",
+      "plot_label": "DKI Micro Tortuosity",
+      "family": "DKI Micro",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dkimicro_param-tortuosity_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 9
+    },
+    {
+      "id": "dmri_dki_ad",
+      "group": "dMRI",
+      "pattern_key": "DKI AD",
+      "label": "DKI AD",
+      "primary_label": "DKI AD",
+      "plot_label": "DKI AD",
+      "family": "DKI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dki_param-ad_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 10
+    },
+    {
+      "id": "dmri_dki_ak",
+      "group": "dMRI",
+      "pattern_key": "DKI AK",
+      "label": "DKI AK",
+      "primary_label": "DKI AK",
+      "plot_label": "DKI AK",
+      "family": "DKI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dki_param-ak_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 11
+    },
+    {
+      "id": "dmri_dki_kfa",
+      "group": "dMRI",
+      "pattern_key": "DKI KFA",
+      "label": "DKI KFA",
+      "primary_label": "DKI KFA",
+      "plot_label": "DKI KFA",
+      "family": "DKI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dki_param-kfa_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 12
+    },
+    {
+      "id": "dmri_dki_md",
+      "group": "dMRI",
+      "pattern_key": "DKI MD",
+      "label": "DKI MD",
+      "primary_label": "DKI MD",
+      "plot_label": "DKI MD",
+      "family": "DKI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dki_param-md_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 13
+    },
+    {
+      "id": "dmri_dki_mk",
+      "group": "dMRI",
+      "pattern_key": "DKI MK",
+      "label": "DKI MK",
+      "primary_label": "DKI MK",
+      "plot_label": "DKI MK",
+      "family": "DKI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dki_param-mk_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 14
+    },
+    {
+      "id": "dmri_dki_mkt",
+      "group": "dMRI",
+      "pattern_key": "DKI MKT",
+      "label": "MKT",
+      "primary_label": "MKT",
+      "plot_label": "MKT",
+      "family": "DKI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dki_param-mkt_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 4,
+      "expanded_order": 15
+    },
+    {
+      "id": "dmri_dki_rd",
+      "group": "dMRI",
+      "pattern_key": "DKI RD",
+      "label": "DKI RD",
+      "primary_label": "DKI RD",
+      "plot_label": "DKI RD",
+      "family": "DKI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dki_param-rd_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 16
+    },
+    {
+      "id": "dmri_dki_rk",
+      "group": "dMRI",
+      "pattern_key": "DKI RK",
+      "label": "RK",
+      "primary_label": "RK",
+      "plot_label": "RK",
+      "family": "DKI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dki_param-rk_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 5,
+      "expanded_order": 17
+    },
+    {
+      "id": "dmri_dki_fa",
+      "group": "dMRI",
+      "pattern_key": "DKI FA",
+      "label": "DKI FA",
+      "primary_label": "DKI FA",
+      "plot_label": "DKI FA",
+      "family": "DKI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DIPYDKI/{subject}/{session}/dwi/*_space-{space}_model-dki_param-fa_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 18
+    },
+    {
+      "id": "dmri_gqi_gfa",
+      "group": "dMRI",
+      "pattern_key": "GQI GFA",
+      "label": "GFA",
+      "primary_label": "GFA",
+      "plot_label": "GFA",
+      "family": "GQI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DSIStudio/{subject}/{session}/dwi/*_space-{space}_model-gqi_param-gfa_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 12,
+      "expanded_order": 19
+    },
+    {
+      "id": "dmri_gqi_iso",
+      "group": "dMRI",
+      "pattern_key": "GQI ISO",
+      "label": "GQI ISO",
+      "primary_label": "GQI ISO",
+      "plot_label": "GQI ISO",
+      "family": "GQI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DSIStudio/{subject}/{session}/dwi/*_space-{space}_model-gqi_param-iso_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 20
+    },
+    {
+      "id": "dmri_gqi_qa",
+      "group": "dMRI",
+      "pattern_key": "GQI QA",
+      "label": "GQI QA",
+      "primary_label": "GQI QA",
+      "plot_label": "GQI QA",
+      "family": "GQI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DSIStudio/{subject}/{session}/dwi/*_space-{space}_model-gqi_param-qa_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 21
+    },
+    {
+      "id": "dmri_ad_dsistudio",
+      "group": "dMRI",
+      "pattern_key": "AD (DSIStudio)",
+      "label": "AD (DSIStudio)",
+      "primary_label": "AD (DSIStudio)",
+      "plot_label": "AD (DSI Studio)",
+      "family": "dMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DSIStudio/{subject}/{session}/dwi/*_space-{space}_model-tensor_param-ad_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 22
+    },
+    {
+      "id": "dmri_fa_dsistudio",
+      "group": "dMRI",
+      "pattern_key": "FA (DSIStudio)",
+      "label": "FA (DSIStudio)",
+      "primary_label": "FA (DSIStudio)",
+      "plot_label": "FA (DSI Studio)",
+      "family": "dMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DSIStudio/{subject}/{session}/dwi/*_space-{space}_model-tensor_param-fa_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 23
+    },
+    {
+      "id": "dmri_md_dsistudio",
+      "group": "dMRI",
+      "pattern_key": "MD (DSIStudio)",
+      "label": "MD (DSIStudio)",
+      "primary_label": "MD (DSIStudio)",
+      "plot_label": "MD (DSI Studio)",
+      "family": "dMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DSIStudio/{subject}/{session}/dwi/*_space-{space}_model-tensor_param-md_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 24
+    },
+    {
+      "id": "dmri_rd_dsistudio",
+      "group": "dMRI",
+      "pattern_key": "RD (DSIStudio)",
+      "label": "RD (DSIStudio)",
+      "primary_label": "RD (DSIStudio)",
+      "plot_label": "RD (DSI Studio)",
+      "family": "dMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-DSIStudio/{subject}/{session}/dwi/*_space-{space}_model-tensor_param-rd_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 25
+    },
+    {
+      "id": "dmri_icvf_modulated",
+      "group": "dMRI",
+      "pattern_key": "ICVF (Modulated)",
+      "label": "ICVF (Modulated)",
+      "primary_label": "ICVF (Modulated)",
+      "plot_label": "ICVF (Modulated)",
+      "family": "NODDI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-NODDI/{subject}/{session}/dwi/*_space-{space}_model-noddi_param-icvf_desc-modulated_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 26
+    },
+    {
+      "id": "dmri_icvf",
+      "group": "dMRI",
+      "pattern_key": "ICVF",
+      "label": "ICVF",
+      "primary_label": "ICVF",
+      "plot_label": "ICVF",
+      "family": "NODDI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-NODDI/{subject}/{session}/dwi/*_space-{space}_model-noddi_param-icvf_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 7,
+      "expanded_order": 27
+    },
+    {
+      "id": "dmri_isovf",
+      "group": "dMRI",
+      "pattern_key": "ISOVF",
+      "label": "ISOVF",
+      "primary_label": "ISOVF",
+      "plot_label": "ISOVF",
+      "family": "NODDI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-NODDI/{subject}/{session}/dwi/*_space-{space}_model-noddi_param-isovf_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 28
+    },
+    {
+      "id": "dmri_od_modulated",
+      "group": "dMRI",
+      "pattern_key": "OD (Modulated)",
+      "label": "OD (Modulated)",
+      "primary_label": "OD (Modulated)",
+      "plot_label": "OD (Modulated)",
+      "family": "NODDI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-NODDI/{subject}/{session}/dwi/*_space-{space}_model-noddi_param-od_desc-modulated_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 29
+    },
+    {
+      "id": "dmri_od",
+      "group": "dMRI",
+      "pattern_key": "OD",
+      "label": "OD",
+      "primary_label": "OD",
+      "plot_label": "OD",
+      "family": "NODDI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-NODDI/{subject}/{session}/dwi/*_space-{space}_model-noddi_param-od_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 30
+    },
+    {
+      "id": "dmri_icvf_gm_modulated",
+      "group": "dMRI",
+      "pattern_key": "ICVF (GM; Modulated)",
+      "label": "ICVF (GM; Modulated)",
+      "primary_label": "ICVF (GM; Modulated)",
+      "plot_label": "ICVF (GM; Modulated)",
+      "family": "NODDI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-gmNODDI/{subject}/{session}/dwi/*_space-{space}_model-noddi_param-icvf_desc-modulated_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 31
+    },
+    {
+      "id": "dmri_icvf_gm",
+      "group": "dMRI",
+      "pattern_key": "ICVF (GM)",
+      "label": "ICVF (GM)",
+      "primary_label": "ICVF",
+      "plot_label": "ICVF (GM)",
+      "family": "NODDI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-gmNODDI/{subject}/{session}/dwi/*_space-{space}_model-noddi_param-icvf_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm"
+      ],
+      "primary": false,
+      "primary_order": 7,
+      "expanded_order": 32
+    },
+    {
+      "id": "dmri_isovf_gm",
+      "group": "dMRI",
+      "pattern_key": "ISOVF (GM)",
+      "label": "ISOVF (GM)",
+      "primary_label": "ISOVF (GM)",
+      "plot_label": "ISOVF (GM)",
+      "family": "NODDI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-gmNODDI/{subject}/{session}/dwi/*_space-{space}_model-noddi_param-isovf_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 33
+    },
+    {
+      "id": "dmri_od_gm_modulated",
+      "group": "dMRI",
+      "pattern_key": "OD (GM; Modulated)",
+      "label": "OD (GM; Modulated)",
+      "primary_label": "OD (GM; Modulated)",
+      "plot_label": "OD (GM; Modulated)",
+      "family": "NODDI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-gmNODDI/{subject}/{session}/dwi/*_space-{space}_model-noddi_param-od_desc-modulated_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 34
+    },
+    {
+      "id": "dmri_od_gm",
+      "group": "dMRI",
+      "pattern_key": "OD (GM)",
+      "label": "OD (GM)",
+      "primary_label": "OD (GM)",
+      "plot_label": "OD (GM)",
+      "family": "NODDI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-gmNODDI/{subject}/{session}/dwi/*_space-{space}_model-noddi_param-od_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 35
+    },
+    {
+      "id": "dmri_ng",
+      "group": "dMRI",
+      "pattern_key": "NG",
+      "label": "NG",
+      "primary_label": "NG",
+      "plot_label": "NG",
+      "family": "MAPMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-MAPMRI/{subject}/{session}/dwi/*_space-{space}_model-mapmri_param-ng_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 10,
+      "expanded_order": 36
+    },
+    {
+      "id": "dmri_ng_parallel",
+      "group": "dMRI",
+      "pattern_key": "NG Parallel",
+      "label": "NG (Parallel)",
+      "primary_label": "NG (Parallel)",
+      "plot_label": "NG ∥",
+      "family": "MAPMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-MAPMRI/{subject}/{session}/dwi/*_space-{space}_model-mapmri_param-ngpar_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 37
+    },
+    {
+      "id": "dmri_ng_perpendicular",
+      "group": "dMRI",
+      "pattern_key": "NG Perpendicular",
+      "label": "NG (Perpendicular)",
+      "primary_label": "NG (Perpendicular)",
+      "plot_label": "NG⊥",
+      "family": "MAPMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-MAPMRI/{subject}/{session}/dwi/*_space-{space}_model-mapmri_param-ngperp_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 11,
+      "expanded_order": 38
+    },
+    {
+      "id": "dmri_pa",
+      "group": "dMRI",
+      "pattern_key": "PA",
+      "label": "PA",
+      "primary_label": "PA",
+      "plot_label": "PA",
+      "family": "MAPMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-MAPMRI/{subject}/{session}/dwi/*_space-{space}_model-mapmri_param-pa_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 39
+    },
+    {
+      "id": "dmri_path",
+      "group": "dMRI",
+      "pattern_key": "PAth",
+      "label": "PAth",
+      "primary_label": "PAth",
+      "plot_label": "PAθ",
+      "family": "MAPMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-MAPMRI/{subject}/{session}/dwi/*_space-{space}_model-mapmri_param-path_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 40
+    },
+    {
+      "id": "dmri_rtap",
+      "group": "dMRI",
+      "pattern_key": "RTAP",
+      "label": "RTAP",
+      "primary_label": "RTAP",
+      "plot_label": "RTAP",
+      "family": "MAPMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-MAPMRI/{subject}/{session}/dwi/*_space-{space}_model-mapmri_param-rtap_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 9,
+      "expanded_order": 41
+    },
+    {
+      "id": "dmri_rtop",
+      "group": "dMRI",
+      "pattern_key": "RTOP",
+      "label": "RTOP",
+      "primary_label": "RTOP",
+      "plot_label": "RTOP",
+      "family": "MAPMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-MAPMRI/{subject}/{session}/dwi/*_space-{space}_model-mapmri_param-rtop_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 8,
+      "expanded_order": 42
+    },
+    {
+      "id": "dmri_rtpp",
+      "group": "dMRI",
+      "pattern_key": "RTPP",
+      "label": "RTPP",
+      "primary_label": "RTPP",
+      "plot_label": "RTPP",
+      "family": "MAPMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-MAPMRI/{subject}/{session}/dwi/*_space-{space}_model-mapmri_param-rtpp_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 43
+    },
+    {
+      "id": "dmri_ad_tortoise_inner_shells",
+      "group": "dMRI",
+      "pattern_key": "AD (TORTOISE; Inner Shells)",
+      "label": "AD (TORTOISE; Inner Shells)",
+      "primary_label": "AD (TORTOISE; Inner Shells)",
+      "plot_label": "AD (TORTOISE; Inner Shells)",
+      "family": "Tensor",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-MAPMRI/{subject}/{session}/dwi/*_space-{space}_model-tensor_param-ad_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 44
+    },
+    {
+      "id": "dmri_fa_tortoise_inner_shells",
+      "group": "dMRI",
+      "pattern_key": "FA (TORTOISE; Inner Shells)",
+      "label": "FA (TORTOISE; Inner Shells)",
+      "primary_label": "FA",
+      "plot_label": "FA",
+      "family": "Tensor",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-MAPMRI/{subject}/{session}/dwi/*_space-{space}_model-tensor_param-fa_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 1,
+      "expanded_order": 45
+    },
+    {
+      "id": "dmri_li_tortoise_inner_shells",
+      "group": "dMRI",
+      "pattern_key": "LI (TORTOISE; Inner Shells)",
+      "label": "LI (TORTOISE; Inner Shells)",
+      "primary_label": "LI (TORTOISE; Inner Shells)",
+      "plot_label": "LI (TORTOISE; Inner Shells)",
+      "family": "Tensor",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-MAPMRI/{subject}/{session}/dwi/*_space-{space}_model-tensor_param-li_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 46
+    },
+    {
+      "id": "dmri_rd_tortoise_inner_shells",
+      "group": "dMRI",
+      "pattern_key": "RD (TORTOISE; Inner Shells)",
+      "label": "RD (TORTOISE; Inner Shells)",
+      "primary_label": "RD",
+      "plot_label": "RD",
+      "family": "Tensor",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-MAPMRI/{subject}/{session}/dwi/*_space-{space}_model-tensor_param-rd_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 3,
+      "expanded_order": 47
+    },
+    {
+      "id": "dmri_md_tortoise_inner_shells",
+      "group": "dMRI",
+      "pattern_key": "MD (TORTOISE; Inner Shells)",
+      "label": "MD (TORTOISE; Inner Shells)",
+      "primary_label": "MD",
+      "plot_label": "MD",
+      "family": "Tensor",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-MAPMRI/{subject}/{session}/dwi/*_space-{space}_model-tensor_param-md_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 2,
+      "expanded_order": 48
+    },
+    {
+      "id": "dmri_ad_tortoise_full_shells",
+      "group": "dMRI",
+      "pattern_key": "AD (TORTOISE; Full Shells)",
+      "label": "AD (TORTOISE; Full Shells)",
+      "primary_label": "AD (TORTOISE; Full Shells)",
+      "plot_label": "AD (TORTOISE; Full Shells)",
+      "family": "dMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-tensor/{subject}/{session}/dwi/*_space-{space}_model-tensor_param-ad_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 49
+    },
+    {
+      "id": "dmri_fa_tortoise_full_shells",
+      "group": "dMRI",
+      "pattern_key": "FA (TORTOISE; Full Shells)",
+      "label": "FA (TORTOISE; Full Shells)",
+      "primary_label": "FA (TORTOISE; Full Shells)",
+      "plot_label": "FA (TORTOISE; Full Shells)",
+      "family": "dMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-tensor/{subject}/{session}/dwi/*_space-{space}_model-tensor_param-fa_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 50
+    },
+    {
+      "id": "dmri_li_tortoise_full_shells",
+      "group": "dMRI",
+      "pattern_key": "LI (TORTOISE; Full Shells)",
+      "label": "LI (TORTOISE; Full Shells)",
+      "primary_label": "LI (TORTOISE; Full Shells)",
+      "plot_label": "LI (TORTOISE; Full Shells)",
+      "family": "dMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-tensor/{subject}/{session}/dwi/*_space-{space}_model-tensor_param-li_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 51
+    },
+    {
+      "id": "dmri_rd_tortoise_full_shells",
+      "group": "dMRI",
+      "pattern_key": "RD (TORTOISE; Full Shells)",
+      "label": "RD (TORTOISE; Full Shells)",
+      "primary_label": "RD (TORTOISE; Full Shells)",
+      "plot_label": "RD (TORTOISE; Full Shells)",
+      "family": "dMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-tensor/{subject}/{session}/dwi/*_space-{space}_model-tensor_param-rd_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 52
+    },
+    {
+      "id": "dmri_md_tortoise_full_shells",
+      "group": "dMRI",
+      "pattern_key": "MD (TORTOISE; Full Shells)",
+      "label": "MD (TORTOISE; Full Shells)",
+      "primary_label": "MD (TORTOISE; Full Shells)",
+      "plot_label": "MD (TORTOISE; Full Shells)",
+      "family": "dMRI",
+      "source_image": "dMRI",
+      "pattern": "qsirecon/derivatives/qsirecon-TORTOISE_model-tensor/{subject}/{session}/dwi/*_space-{space}_model-tensor_param-md_dwimap.nii.gz",
+      "qc_modalities": [
+        "dMRI"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 53
+    },
+    {
+      "id": "ihmt_ihmtw",
+      "group": "ihMT",
+      "pattern_key": "ihMTw",
+      "label": "ihMTw",
+      "primary_label": "ihMTw",
+      "plot_label": "ihMTw",
+      "family": "ihMT",
+      "source_image": "ihMT",
+      "pattern": "ihmt/{subject}/{session}/anat/*_space-{space}_ihMTw.nii.gz",
+      "qc_modalities": [
+        "ihMTRAGE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 54
+    },
+    {
+      "id": "ihmt_ihmtr",
+      "group": "ihMT",
+      "pattern_key": "ihMTR",
+      "label": "ihMTR",
+      "primary_label": "ihMTR",
+      "plot_label": "ihMTR",
+      "family": "ihMT",
+      "source_image": "ihMT",
+      "pattern": "ihmt/{subject}/{session}/anat/*_space-{space}_ihMTR.nii.gz",
+      "qc_modalities": [
+        "ihMTRAGE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 14,
+      "expanded_order": 55
+    },
+    {
+      "id": "ihmt_mtr",
+      "group": "ihMT",
+      "pattern_key": "MTR",
+      "label": "MTR",
+      "primary_label": "MTR",
+      "plot_label": "MTR",
+      "family": "ihMT",
+      "source_image": "ihMT",
+      "pattern": "ihmt/{subject}/{session}/anat/*_space-{space}_MTRmap.nii.gz",
+      "qc_modalities": [
+        "ihMTRAGE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 56
+    },
+    {
+      "id": "ihmt_ihmtsat",
+      "group": "ihMT",
+      "pattern_key": "ihMTsat",
+      "label": "ihMTsat",
+      "primary_label": "ihMTsat",
+      "plot_label": "ihMTsat",
+      "family": "ihMT",
+      "source_image": "ihMT",
+      "pattern": "ihmt/{subject}/{session}/anat/*_space-{space}_ihMTsat.nii.gz",
+      "qc_modalities": [
+        "MP2RAGE",
+        "ihMTRAGE",
+        "B1+"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 57
+    },
+    {
+      "id": "ihmt_ihmtsat_b1c",
+      "group": "ihMT",
+      "pattern_key": "ihMTsat-B1c",
+      "label": "ihMTsat-B1c",
+      "primary_label": "ihMTsat-B1c",
+      "plot_label": "ihMTsat-B₁c",
+      "family": "ihMT",
+      "source_image": "ihMT",
+      "pattern": "ihmt/{subject}/{session}/anat/*_space-{space}_ihMTsatB1sq.nii.gz",
+      "qc_modalities": [
+        "MP2RAGE",
+        "ihMTRAGE",
+        "B1+"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 13,
+      "expanded_order": 58
+    },
+    {
+      "id": "mese_r2",
+      "group": "MESE",
+      "pattern_key": "R2",
+      "label": "R2",
+      "primary_label": "R2",
+      "plot_label": "R₂",
+      "family": "MESE",
+      "source_image": "MESE",
+      "pattern": "mese/{subject}/{session}/anat/*_space-{space}_desc-MESE_R2map.nii.gz",
+      "qc_modalities": [
+        "MESE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 15,
+      "expanded_order": 59
+    },
+    {
+      "id": "megre_r2_e5",
+      "group": "MEGRE",
+      "pattern_key": "R2*-E5",
+      "label": "R2*-E5",
+      "primary_label": "R2*",
+      "plot_label": "R₂*",
+      "family": "MEGRE",
+      "source_image": "MEGRE",
+      "pattern": "megre/{subject}/{session}/anat/*_space-{space}_desc-MEGRE+E12345_R2starmap.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 16,
+      "expanded_order": 60
+    },
+    {
+      "id": "megre_r2_e4",
+      "group": "MEGRE",
+      "pattern_key": "R2*-E4",
+      "label": "R2*-E4",
+      "primary_label": "R2*-E4",
+      "plot_label": "R₂*-E4",
+      "family": "MEGRE",
+      "source_image": "MEGRE",
+      "pattern": "megre/{subject}/{session}/anat/*_space-{space}_desc-MEGRE+E2345_R2starmap.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 61
+    },
+    {
+      "id": "megre_r2_e5",
+      "group": "MEGRE",
+      "pattern_key": "R2'-E5",
+      "label": "R2'-E5",
+      "primary_label": "R2'-E5",
+      "plot_label": "R₂'-E5",
+      "family": "MEGRE",
+      "source_image": "MEGRE",
+      "pattern": "megre/{subject}/{session}/anat/*_space-{space}_desc-MEGRE+E12345_R2primemap.nii.gz",
+      "qc_modalities": [
+        "MEGRE",
+        "MESE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 62
+    },
+    {
+      "id": "megre_r2_e4",
+      "group": "MEGRE",
+      "pattern_key": "R2'-E4",
+      "label": "R2'-E4",
+      "primary_label": "R2'-E4",
+      "plot_label": "R₂'-E4",
+      "family": "MEGRE",
+      "source_image": "MEGRE",
+      "pattern": "megre/{subject}/{session}/anat/*_space-{space}_desc-MEGRE+E2345_R2primemap.nii.gz",
+      "qc_modalities": [
+        "MEGRE",
+        "MESE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 63
+    },
+    {
+      "id": "mp2rage_r1",
+      "group": "MP2RAGE",
+      "pattern_key": "R1",
+      "label": "R1",
+      "primary_label": "R1",
+      "plot_label": "R₁",
+      "family": "R1",
+      "source_image": "R1",
+      "pattern": "pymp2rage/{subject}/{session}/anat/*_space-{space}_R1map.nii.gz",
+      "qc_modalities": [
+        "MP2RAGE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 17,
+      "expanded_order": 64
+    },
+    {
+      "id": "mp2rage_r1_b1c",
+      "group": "MP2RAGE",
+      "pattern_key": "R1-B1c",
+      "label": "R1-B1c",
+      "primary_label": "R1-B1c",
+      "plot_label": "R₁-B₁c",
+      "family": "R1",
+      "source_image": "R1",
+      "pattern": "pymp2rage/{subject}/{session}/anat/*_space-{space}_desc-B1corrected_R1map.nii.gz",
+      "qc_modalities": [
+        "MP2RAGE",
+        "B1+"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 18,
+      "expanded_order": 65
+    },
+    {
+      "id": "t1w_t2w_ratio_mprage_myelinw",
+      "group": "T1w/T2w Ratio",
+      "pattern_key": "MPRAGE-MyelinW",
+      "label": "MPRAGE-MyelinW",
+      "primary_label": "MPRAGE-MyelinW",
+      "plot_label": "MPRAGE T₁w/T₂w Ratio",
+      "family": "T1w/T2w",
+      "source_image": "T1w/T2w",
+      "pattern": "t1wt2w_ratio/{subject}/{session}/anat/*_space-{space}_desc-MPRAGEunscaled_myelinw.nii.gz",
+      "qc_modalities": [
+        "MPRAGE T1w",
+        "SPACE T2w"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 19,
+      "expanded_order": 66
+    },
+    {
+      "id": "t1w_t2w_ratio_space_myelinw",
+      "group": "T1w/T2w Ratio",
+      "pattern_key": "SPACE-MyelinW",
+      "label": "SPACE-MyelinW",
+      "primary_label": "SPACE-MyelinW",
+      "plot_label": "SPACE T₁w/T₂w Ratio",
+      "family": "T1w/T2w",
+      "source_image": "T1w/T2w",
+      "pattern": "t1wt2w_ratio/{subject}/{session}/anat/*_space-{space}_desc-SPACEunscaled_myelinw.nii.gz",
+      "qc_modalities": [
+        "SPACE T1w",
+        "SPACE T2w"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 20,
+      "expanded_order": 67
+    },
+    {
+      "id": "g_ratio_g_ihmtsat",
+      "group": "G-Ratio",
+      "pattern_key": "G-ihMTsat",
+      "label": "G-ihMTsat",
+      "primary_label": "G-ihMTsat",
+      "plot_label": "$\\it{g}$-ihMTsat",
+      "family": "g-ratio",
+      "source_image": "g-ratio",
+      "pattern": "g_ratio/{subject}/{session}/anat/*_space-{space}_desc-MTsat+ISOVF+ICVF_gratio.nii.gz",
+      "qc_modalities": [
+        "MP2RAGE",
+        "dMRI",
+        "ihMTRAGE",
+        "B1+"
+      ],
+      "tissues": [
+        "wm"
+      ],
+      "primary": true,
+      "primary_order": 21,
+      "expanded_order": 68
+    },
+    {
+      "id": "g_ratio_g_ihmtr",
+      "group": "G-Ratio",
+      "pattern_key": "G-ihMTR",
+      "label": "G-ihMTR",
+      "primary_label": "G-ihMTR",
+      "plot_label": "$\\it{g}$-ihMTR",
+      "family": "g-ratio",
+      "source_image": "g-ratio",
+      "pattern": "g_ratio/{subject}/{session}/anat/*_space-{space}_desc-ihMTR+ISOVF+ICVF_gratio.nii.gz",
+      "qc_modalities": [
+        "dMRI",
+        "ihMTRAGE"
+      ],
+      "tissues": [
+        "wm"
+      ],
+      "primary": true,
+      "primary_order": 22,
+      "expanded_order": 69
+    },
+    {
+      "id": "q_ratio_q_ratio_e5",
+      "group": "Q-Ratio",
+      "pattern_key": "Q-Ratio-E5",
+      "label": "Q-Ratio-E5",
+      "primary_label": "Q-Ratio-E5",
+      "plot_label": "$\\it{q}$-Ratio-E5",
+      "family": "MEGRE",
+      "source_image": "MEGRE",
+      "pattern": "q_ratio/{subject}/{session}/anat/*_space-{space}_desc-E12345_qratio.nii.gz",
+      "qc_modalities": [
+        "MP2RAGE",
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 70
+    },
+    {
+      "id": "q_ratio_q_ratio_e5_b1c",
+      "group": "Q-Ratio",
+      "pattern_key": "Q-Ratio-E5-B1c",
+      "label": "Q-Ratio-E5-B1c",
+      "primary_label": "Q-Ratio-E5-B1c",
+      "plot_label": "$\\it{q}$-Ratio-E5-B₁c",
+      "family": "MEGRE",
+      "source_image": "MEGRE",
+      "pattern": "q_ratio/{subject}/{session}/anat/*_space-{space}_desc-E12345+B1corrected_qratio.nii.gz",
+      "qc_modalities": [
+        "MP2RAGE",
+        "MEGRE",
+        "B1+"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 23,
+      "expanded_order": 71
+    },
+    {
+      "id": "q_ratio_q_ratio_e4",
+      "group": "Q-Ratio",
+      "pattern_key": "Q-Ratio-E4",
+      "label": "Q-Ratio-E4",
+      "primary_label": "Q-Ratio-E4",
+      "plot_label": "$\\it{q}$-Ratio-E4",
+      "family": "MEGRE",
+      "source_image": "MEGRE",
+      "pattern": "q_ratio/{subject}/{session}/anat/*_space-{space}_desc-E2345_qratio.nii.gz",
+      "qc_modalities": [
+        "MP2RAGE",
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 72
+    },
+    {
+      "id": "q_ratio_q_ratio_e4_b1c",
+      "group": "Q-Ratio",
+      "pattern_key": "Q-Ratio-E4-B1c",
+      "label": "Q-Ratio-E4-B1c",
+      "primary_label": "Q-Ratio-E4-B1c",
+      "plot_label": "$\\it{q}$-Ratio-E4-B₁c",
+      "family": "MEGRE",
+      "source_image": "MEGRE",
+      "pattern": "q_ratio/{subject}/{session}/anat/*_space-{space}_desc-E2345+B1corrected_qratio.nii.gz",
+      "qc_modalities": [
+        "MP2RAGE",
+        "MEGRE",
+        "B1+"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 73
+    },
+    {
+      "id": "qsm_qsm_sepia_e5_x",
+      "group": "QSM",
+      "pattern_key": "QSM-SEPIA-E5-X",
+      "label": "QSM-SEPIA-E5-X",
+      "primary_label": "QSM-SEPIA-E5-X",
+      "plot_label": "QSM-SEPIA-E5-χ",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E12345+sepia_Chimap.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 24,
+      "expanded_order": 74
+    },
+    {
+      "id": "qsm_qsm_sepia_e4_x",
+      "group": "QSM",
+      "pattern_key": "QSM-SEPIA-E4-X",
+      "label": "QSM-SEPIA-E4-X",
+      "primary_label": "QSM-SEPIA-E4-X",
+      "plot_label": "QSM-SEPIA-E4-χ",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E2345+sepia_Chimap.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 75
+    },
+    {
+      "id": "qsm_qsm_x_r2_e5_x",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2'-E5-X",
+      "label": "QSM-X-R2p-E5-X",
+      "primary_label": "QSM-X-R2p-E5-X",
+      "plot_label": "QSM-χ-R₂p-E5-χ",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E12345+chisep+r2p_Chimap.nii.gz",
+      "qc_modalities": [
+        "MEGRE",
+        "MESE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 25,
+      "expanded_order": 76
+    },
+    {
+      "id": "qsm_qsm_x_r2_e4_x",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2'-E4-X",
+      "label": "QSM-X-R2p-E4-X",
+      "primary_label": "QSM-X-R2p-E4-X",
+      "plot_label": "QSM-χ-R₂p-E4-χ",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E2345+chisep+r2p_Chimap.nii.gz",
+      "qc_modalities": [
+        "MEGRE",
+        "MESE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 77
+    },
+    {
+      "id": "qsm_qsm_x_r2_e5_para",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2'-E5-Para",
+      "label": "QSM-X-R2p-E5-Para",
+      "primary_label": "QSM-X-R2p-E5-Para",
+      "plot_label": "QSM-χ-R₂p-E5-Para",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E12345+chisep+r2p_para.nii.gz",
+      "qc_modalities": [
+        "MEGRE",
+        "MESE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 26,
+      "expanded_order": 78
+    },
+    {
+      "id": "qsm_qsm_x_r2_e4_para",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2'-E4-Para",
+      "label": "QSM-X-R2p-E4-Para",
+      "primary_label": "QSM-X-R2p-E4-Para",
+      "plot_label": "QSM-χ-R₂p-E4-Para",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E2345+chisep+r2p_para.nii.gz",
+      "qc_modalities": [
+        "MEGRE",
+        "MESE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 79
+    },
+    {
+      "id": "qsm_qsm_x_r2_e5_dia",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2'-E5-Dia",
+      "label": "QSM-X-R2p-E5-Dia",
+      "primary_label": "QSM-X-R2p-E5-Dia",
+      "plot_label": "QSM-χ-R₂p-E5-Dia",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E12345+chisep+r2p_dia.nii.gz",
+      "qc_modalities": [
+        "MEGRE",
+        "MESE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": true,
+      "primary_order": 27,
+      "expanded_order": 80
+    },
+    {
+      "id": "qsm_qsm_x_r2_e4_dia",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2'-E4-Dia",
+      "label": "QSM-X-R2p-E4-Dia",
+      "primary_label": "QSM-X-R2p-E4-Dia",
+      "plot_label": "QSM-χ-R₂p-E4-Dia",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E2345+chisep+r2p_dia.nii.gz",
+      "qc_modalities": [
+        "MEGRE",
+        "MESE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 81
+    },
+    {
+      "id": "qsm_qsm_x_r2pnet_e5_x",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2pnet-E5-X",
+      "label": "QSM-X-R2pnet-E5-X",
+      "primary_label": "QSM-X-R2pnet-E5-X",
+      "plot_label": "QSM-χ-R₂pnet-E5-χ",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E12345+chisep+r2primenet_Chimap.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 82
+    },
+    {
+      "id": "qsm_qsm_x_r2pnet_e4_x",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2pnet-E4-X",
+      "label": "QSM-X-R2pnet-E4-X",
+      "primary_label": "QSM-X-R2pnet-E4-X",
+      "plot_label": "QSM-χ-R₂pnet-E4-χ",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E2345+chisep+r2primenet_Chimap.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 83
+    },
+    {
+      "id": "qsm_qsm_x_r2pnet_e5_para",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2pnet-E5-Para",
+      "label": "QSM-X-R2pnet-E5-Para",
+      "primary_label": "QSM-X-R2pnet-E5-Para",
+      "plot_label": "QSM-χ-R₂pnet-E5-Para",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E12345+chisep+r2primenet_para.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 84
+    },
+    {
+      "id": "qsm_qsm_x_r2pnet_e4_para",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2pnet-E4-Para",
+      "label": "QSM-X-R2pnet-E4-Para",
+      "primary_label": "QSM-X-R2pnet-E4-Para",
+      "plot_label": "QSM-χ-R₂pnet-E4-Para",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E2345+chisep+r2primenet_para.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 85
+    },
+    {
+      "id": "qsm_qsm_x_r2pnet_e5_dia",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2pnet-E5-Dia",
+      "label": "QSM-X-R2pnet-E5-Dia",
+      "primary_label": "QSM-X-R2pnet-E5-Dia",
+      "plot_label": "QSM-χ-R₂pnet-E5-Dia",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E12345+chisep+r2primenet_dia.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 86
+    },
+    {
+      "id": "qsm_qsm_x_r2pnet_e4_dia",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2pnet-E4-Dia",
+      "label": "QSM-X-R2pnet-E4-Dia",
+      "primary_label": "QSM-X-R2pnet-E4-Dia",
+      "plot_label": "QSM-χ-R₂pnet-E4-Dia",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E2345+chisep+r2primenet_dia.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 87
+    },
+    {
+      "id": "qsm_qsm_x_r2_e5_x",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2*-E5-X",
+      "label": "QSM-X-R2*-E5-X",
+      "primary_label": "QSM-X-R2*-E5-X",
+      "plot_label": "QSM-χ-R₂*-E5-χ",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E12345+chisep+r2s_Chimap.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 88
+    },
+    {
+      "id": "qsm_qsm_x_r2_e4_x",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2*-E4-X",
+      "label": "QSM-X-R2*-E4-X",
+      "primary_label": "QSM-X-R2*-E4-X",
+      "plot_label": "QSM-χ-R₂*-E4-χ",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E2345+chisep+r2s_Chimap.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 89
+    },
+    {
+      "id": "qsm_qsm_x_r2_e5_para",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2*-E5-Para",
+      "label": "QSM-X-R2*-E5-Para",
+      "primary_label": "QSM-X-R2*-E5-Para",
+      "plot_label": "QSM-χ-R₂*-E5-Para",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E12345+chisep+r2s_para.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 90
+    },
+    {
+      "id": "qsm_qsm_x_r2_e4_para",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2*-E4-Para",
+      "label": "QSM-X-R2*-E4-Para",
+      "primary_label": "QSM-X-R2*-E4-Para",
+      "plot_label": "QSM-χ-R₂*-E4-Para",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E2345+chisep+r2s_para.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 91
+    },
+    {
+      "id": "qsm_qsm_x_r2_e5_dia",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2*-E5-Dia",
+      "label": "QSM-X-R2*-E5-Dia",
+      "primary_label": "QSM-X-R2*-E5-Dia",
+      "plot_label": "QSM-χ-R₂*-E5-Dia",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E12345+chisep+r2s_dia.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 92
+    },
+    {
+      "id": "qsm_qsm_x_r2_e4_dia",
+      "group": "QSM",
+      "pattern_key": "QSM-X-R2*-E4-Dia",
+      "label": "QSM-X-R2*-E4-Dia",
+      "primary_label": "QSM-X-R2*-E4-Dia",
+      "plot_label": "QSM-χ-R₂*-E4-Dia",
+      "family": "QSM",
+      "source_image": "QSM",
+      "pattern": "qsm/{subject}/{session}/anat/*_space-{space}_desc-E2345+chisep+r2s_dia.nii.gz",
+      "qc_modalities": [
+        "MEGRE"
+      ],
+      "tissues": [
+        "gm",
+        "wm",
+        "gmwm"
+      ],
+      "primary": false,
+      "primary_order": null,
+      "expanded_order": 93
+    }
+  ]
+}

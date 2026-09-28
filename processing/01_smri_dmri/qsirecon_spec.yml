@@ -1,0 +1,144 @@
+anatomical: []
+name: mirror_postproc
+nodes:
+### AMICO NODDI
+-   action: fit_noddi
+    input: qsirecon
+    name: fit_noddi
+    parameters:
+        dIso: 0.003
+        dPar: 0.0017
+        isExvivo: false
+    qsirecon_suffix: NODDI
+    software: AMICO
+### NODDI with GM parameters
+-   action: fit_noddi
+    input: qsirecon
+    name: fit_noddi_gm
+    parameters:
+        dIso: 0.003
+        dPar: 0.0011
+        isExvivo: false
+    qsirecon_suffix: gmNODDI
+    software: AMICO
+### DIPY DKI
+-   action: DKI_reconstruction
+    input: qsirecon
+    name: dipy_dki
+    parameters:
+        wmti: true
+        msdki: true
+        write_fibgz: false
+        write_mif: false
+    qsirecon_suffix: DIPYDKI
+    software: Dipy
+### TORTOISE MAP-MRI + INNER b-VAL TENSOR
+-   action: estimate
+    input: qsirecon
+    name: tortoise_dtmapmri
+    parameters:
+        big_delta: null
+        estimate_mapmri:
+            map_order: 4
+        estimate_tensor:
+            bval_cutoff: 1200
+            write_cs: true
+        estimate_tensor_separately: true
+        small_delta: null
+    qsirecon_suffix: TORTOISE_model-MAPMRI
+    software: TORTOISE
+### TORTOISE FULL SHELL TENSOR
+-   action: estimate
+    input: qsirecon
+    name: tortoise_fullshell_tensor
+    parameters:
+        big_delta: null
+        estimate_tensor:
+            bval_cutoff: 4000
+            write_cs: true
+        estimate_tensor_separately: true
+        small_delta: null
+    qsirecon_suffix: TORTOISE_model-tensor
+    software: TORTOISE
+### DSI STUDIO GQI
+-   action: reconstruction
+    input: qsirecon
+    name: dsistudio_gqi
+    parameters:
+        method: gqi
+    qsirecon_suffix: DSIStudio
+    software: DSI Studio
+-   action: export
+    input: dsistudio_gqi
+    name: gqi_scalars
+    qsirecon_suffix: DSIStudio
+    software: DSI Studio
+### Perform the registration using the GQI-based QA+ISO
+-   action: autotrack_registration
+    input: dsistudio_gqi
+    name: autotrack_gqi_registration
+    # qsirecon_suffix: Don't include here - the map.gz is saved in autotrack
+    software: DSI Studio
+### MRtrix MSMT CSD
+-   action: csd
+    software: MRTrix3
+    input: qsirecon
+    name: msmt_csd
+    parameters:
+        fod:
+            algorithm: msmt_csd
+            max_sh:
+            - 8
+            - 8
+            - 8
+        mtnormalize: true
+        response:
+            algorithm: dhollander
+    qsirecon_suffix: MSMTAutoTrack
+# Merge the FOD fib file and the map file
+-   action: fod_fib_merge
+    name: create_fod_fib_msmt
+    # to include the fib file AND the map file
+    input: autotrack_gqi_registration
+    csd_input: msmt_csd
+    # outputs include the FOD fib file and the map file is passed through
+    qsirecon_suffix: MSMTAutoTrack
+    parameters:
+        model: msmt
+# Execute AutoTrack
+-   action: autotrack
+    input: create_fod_fib_msmt
+    name: autotrack_fod_msmt
+    parameters:
+        tolerance: 22,26,30
+        track_id: Association_ArcuateFasciculusL,Association_ArcuateFasciculusR,Association_CingulumL_FrontalParahippocampal,Association_CingulumL_FrontalParietal,Association_CingulumL_SuperiorLongitudinalFasciculus1,Association_CingulumL_ParahippocampalParietal,Association_CingulumL_Parahippocampal,Association_CingulumL_Parolfactory,Association_CingulumR_FrontalParahippocampal,Association_CingulumR_FrontalParietal,Association_CingulumR_SuperiorLongitudinalFasciculus1,Association_CingulumR_ParahippocampalParietal,Association_CingulumR_Parahippocampal,Association_CingulumR_Parolfactory,Association_ExtremeCapsuleL,Association_ExtremeCapsuleR,Association_FrontalAslantTractL,Association_FrontalAslantTractR,Association_HippocampusAlveusL,Association_HippocampusAlveusR,Association_InferiorFrontoOccipitalFasciculusL,Association_InferiorFrontoOccipitalFasciculusR,Association_InferiorLongitudinalFasciculusL,Association_InferiorLongitudinalFasciculusR,Association_MiddleLongitudinalFasciculusL,Association_MiddleLongitudinalFasciculusR,Association_ParietalAslantTractL,Association_ParietalAslantTractR,Association_SuperiorLongitudinalFasciculusL_2,Association_SuperiorLongitudinalFasciculusL_3,Association_SuperiorLongitudinalFasciculusR_2,Association_SuperiorLongitudinalFasciculusR_3,Association_UncinateFasciculusL,Association_UncinateFasciculusR,Association_VerticalOccipitalFasciculusL,Association_VerticalOccipitalFasciculusR,ProjectionBasalGanglia_AcousticRadiationL,ProjectionBasalGanglia_AcousticRadiationR,ProjectionBasalGanglia_CorticostriatalTractL_Anterior,ProjectionBasalGanglia_CorticostriatalTractL_Posterior,ProjectionBasalGanglia_CorticostriatalTractL_Superior,ProjectionBasalGanglia_CorticostriatalTractR_Anterior,ProjectionBasalGanglia_CorticostriatalTractR_Posterior,ProjectionBasalGanglia_CorticostriatalTractR_Superior,ProjectionBasalGanglia_ThalamicRadiationL_Anterior,ProjectionBasalGanglia_ThalamicRadiationL_Posterior,ProjectionBasalGanglia_ThalamicRadiationL_Superior,ProjectionBasalGanglia_ThalamicRadiationR_Anterior,ProjectionBasalGanglia_ThalamicRadiationR_Posterior,ProjectionBasalGanglia_ThalamicRadiationR_Superior,ProjectionBasalGanglia_OpticRadiationL,ProjectionBasalGanglia_OpticRadiationR,ProjectionBasalGanglia_FornixL,ProjectionBasalGanglia_FornixR,ProjectionBasalGanglia_AnsaLenticularisL,ProjectionBasalGanglia_AnsaLenticularisR,ProjectionBasalGanglia_AnsaSubthalamicaL,ProjectionBasalGanglia_AnsaSubthalamicaR,ProjectionBasalGanglia_FasciculusLenticularisL,ProjectionBasalGanglia_FasciculusLenticularisR,ProjectionBasalGanglia_FasciculusSubthalamicusL,ProjectionBasalGanglia_FasciculusSubthalamicusR,ProjectionBrainstem_CorticospinalTractL,ProjectionBrainstem_CorticospinalTractR,ProjectionBrainstem_CorticobulbarTractL,ProjectionBrainstem_CorticobulbarTractR,ProjectionBrainstem_CorticopontineTractL_Frontal,ProjectionBrainstem_CorticopontineTractL_Parietal,ProjectionBrainstem_CorticopontineTractL_Occipital,ProjectionBrainstem_CorticopontineTractR_Frontal,ProjectionBrainstem_CorticopontineTractR_Parietal,ProjectionBrainstem_CorticopontineTractR_Occipital,ProjectionBrainstem_MedialLemniscusL,ProjectionBrainstem_MedialLemniscusR,ProjectionBrainstem_DentatorubrothalamicTract-lr,ProjectionBrainstem_DentatorubrothalamicTract-rl,ProjectionBrainstem_NonDecussatingDentatorubrothalamicTractL,ProjectionBrainstem_NonDecussatingDentatorubrothalamicTractR,ProjectionBrainstem_ReticularTractL,ProjectionBrainstem_ReticularTractR,ProjectionBrainstem_MedialForebrainBundleL,ProjectionBrainstem_MedialForebrainBundleR,Commissure_AnteriorCommissure_Frontal,Commissure_AnteriorCommissure_Temporal,Commissure_AnteriorCommissure_Occipital,Commissure_CorpusCallosum_ForcepsMinor,Commissure_CorpusCallosum_Body,Commissure_CorpusCallosum_Tapetum,Commissure_CorpusCallosum_ForcepsMajor,Cerebellum_CerebellumL,Cerebellum_CerebellumR,Cerebellum_InferiorCerebellarPeduncleL,Cerebellum_InferiorCerebellarPeduncleR,Cerebellum_MiddleCerebellarPeduncle,Cerebellum_SuperiorCerebellarPeduncle,Cerebellum_Vermis
+        track_voxel_ratio: 2.0
+        yield_rate: 1.0e-06
+        model: msmt
+    qsirecon_suffix: MSMTAutoTrack
+    software: DSI Studio
+### Bundle Map
+-   action: bundle_map
+    input: autotrack_fod_msmt
+    name: bundle_map
+    scalars_from:
+    - fit_noddi
+    - gqi_scalars
+    - dipy_dki
+    - tortoise_fullshell_tensor
+    - tortoise_dtmapmri
+    software: qsirecon
+### Template map
+-   action: template_map
+    input: qsirecon
+    name: template_map
+    parameters:
+        interpolation: Linear
+    scalars_from:
+    - fit_noddi
+    - fit_noddi_gm
+    - gqi_scalars
+    - dipy_dki
+    - tortoise_fullshell_tensor
+    - tortoise_dtmapmri
+    software: qsirecon

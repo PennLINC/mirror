@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supplemental scalar MRI measures</title>
+<style>
+  :root {
+    color-scheme: light;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+  }
+  body {
+    margin: 0;
+    color: #222222;
+    background: #ffffff;
+  }
+  .table-wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 1.25rem;
+  }
+  h1 {
+    margin: 0 0 0.35rem;
+    font-size: 1.35rem;
+    line-height: 1.15;
+  }
+  .subtitle {
+    margin: 0 0 1rem;
+    color: #555555;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.9rem;
+    align-items: center;
+    margin: 0 0 0.9rem;
+    font-size: 0.9rem;
+    line-height: 1.2;
+  }
+  .legend-title {
+    font-weight: 700;
+    margin-right: 0.1rem;
+  }
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.32rem;
+    white-space: nowrap;
+  }
+  .legend-swatch {
+    display: inline-block;
+    width: 0.82rem;
+    height: 0.82rem;
+    border-radius: 999px;
+  }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0 0 0 1px #d7d7d7;
+    border-radius: 0.6rem;
+    overflow: hidden;
+  }
+  thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #242424;
+    color: #ffffff;
+    border-bottom: 2px solid #111111;
+    padding: 0.62rem 0.78rem;
+    text-align: left;
+    font-size: 0.92rem;
+    letter-spacing: 0.01em;
+  }
+  .family-row th {
+    padding: 0.48rem 0.72rem;
+    border-top: 1px solid #d1d1d1;
+    border-bottom: 1px solid #d1d1d1;
+    text-align: left;
+    font-size: 0.94rem;
+    letter-spacing: 0.01em;
+  }
+  .family-count {
+    margin-left: 0.55rem;
+    color: #555555;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  .metric-row td {
+    padding: 0.48rem 0.72rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+    vertical-align: top;
+    line-height: 1.28;
+  }
+  .metric-name {
+    width: 25%;
+    min-width: 13rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .metric-description {
+    width: 75%;
+  }
+  @media print {
+    .table-wrap {
+      max-width: none;
+      padding: 0;
+    }
+    thead th {
+      position: static;
+    }
+    table {
+      box-shadow: none;
+      border: 1px solid #d7d7d7;
+    }
+  }
+</style>
+</head>
+<body>
+<main class="table-wrap">
+  <h1>Supplemental scalar MRI measures</h1>
+  <p class="subtitle">Rows are generated from <code>configuration/metrics.yml</code> and colored by metric family.</p>
+  <div class="legend"><span class="legend-title">Metric family</span><span class="legend-item"><span class="legend-swatch" style="background:#3F6FA8"></span>dMRI</span>
+<span class="legend-item"><span class="legend-swatch" style="background:#268A4B"></span>ihMT</span>
+<span class="legend-item"><span class="legend-swatch" style="background:#0098A7"></span>MESE</span>
+<span class="legend-item"><span class="legend-swatch" style="background:#7B4D9E"></span>MEGRE</span>
+<span class="legend-item"><span class="legend-swatch" style="background:#5F64B4"></span>MESE/MEGRE</span>
+<span class="legend-item"><span class="legend-swatch" style="background:#E86F2A"></span>MP2RAGE</span>
+<span class="legend-item"><span class="legend-swatch" style="background:#B9A224"></span>T₁w/T₂w</span>
+<span class="legend-item"><span class="legend-swatch" style="background:#555555"></span>G-Ratio</span>
+<span class="legend-item"><span class="legend-swatch" style="background:#9D6FBA"></span>Q-Ratio</span>
+<span class="legend-item"><span class="legend-swatch" style="background:#B13F82"></span>QSM</span></div>
+  <table aria-label="Supplemental scalar MRI measures">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+<tr class="family-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><th colspan="2"><span>dMRI</span><span class="family-count">53 metrics</span></th></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DKI Micro AD</td><td class="metric-description">Axial diffusivity estimated by DIPY’s DKI microstructural model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DKI Micro ADE</td><td class="metric-description">Axial diffusivity of the extra-cellular compartment estimated by DIPY’s DKI microstructural model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">AWF</td><td class="metric-description">Axonal water fraction estimated by DIPY’s DKI microstructural model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DKI Micro AxonalD</td><td class="metric-description">Axonal diffusivity estimated by DIPY’s DKI microstructural model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DKI Micro KFA</td><td class="metric-description">Kurtosis fractional anisotropy estimated by DIPY’s DKI microstructural model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DKI Micro MD</td><td class="metric-description">Mean diffusivity estimated by DIPY’s DKI microstructural model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DKI Micro RD</td><td class="metric-description">Radial diffusivity estimated by DIPY’s DKI microstructural model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DKI Micro RDE</td><td class="metric-description">Radial diffusivity of the extra-cellular compartment estimated by DIPY’s DKI microstructural model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DKI Micro Tortuosity</td><td class="metric-description">Tortuosity estimated by DIPY’s DKI microstructural model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DKI AD</td><td class="metric-description">Axial diffusivity estimated by DIPY’s DKI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DKI AK</td><td class="metric-description">Axial kurtosis estimated by DIPY’s DKI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DKI KFA</td><td class="metric-description">Kurtosis fractional anisotropy estimated by DIPY’s DKI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DKI MD</td><td class="metric-description">Mean diffusivity estimated by DIPY’s DKI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DKI MK</td><td class="metric-description">Mean kurtosis estimated by DIPY’s DKI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">MKT</td><td class="metric-description">Mean of the kurtosis tensor estimated by DIPY’s DKI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DKI RD</td><td class="metric-description">Radial diffusivity estimated by DIPY’s DKI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">RK</td><td class="metric-description">Radial kurtosis estimated by DIPY’s DKI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DKI Tensor FA</td><td class="metric-description">Fractional anisotropy estimated by DIPY’s DKI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DSI Studio GQI GFA</td><td class="metric-description">Generalized fractional anisotropy estimated by DSI Studio’s GQI fit.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DSI Studio GQI ISO</td><td class="metric-description">Isotropic diffusion estimated by DSI Studio’s GQI fit.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DSI Studio GQI QA</td><td class="metric-description">Quantitative anisotropy estimated by DSI Studio’s GQI fit.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DSI Studio Tensor AD</td><td class="metric-description">Axial diffusivity estimated by DSI Studio’s tensor fit.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DSI Studio Tensor FA</td><td class="metric-description">Fractional anisotropy estimated by DSI Studio’s tensor fit.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DSI Studio Tensor MD</td><td class="metric-description">Mean diffusivity estimated by DSI Studio’s tensor fit.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">DSI Studio Tensor RD</td><td class="metric-description">Radial diffusivity estimated by DSI Studio’s tensor fit.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">NODDI ICVF Modulated</td><td class="metric-description">Intracellular volume fraction modulated by tissue fraction estimated by AMICO’s NODDI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">NODDI ICVF</td><td class="metric-description">Intracellular volume fraction estimated by AMICO’s NODDI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">NODDI ISOVF</td><td class="metric-description">Isotropic volume fraction estimated by AMICO’s NODDI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">NODDI OD Modulated</td><td class="metric-description">Orientation dispersion index modulated by tissue fraction estimated by AMICO’s NODDI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">NODDI OD</td><td class="metric-description">Orientation dispersion index estimated by AMICO’s NODDI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">NODDI ICVF Modulated (GM)</td><td class="metric-description">Intracellular volume fraction modulated by tissue fraction estimated by AMICO’s gray matter NODDI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">NODDI ICVF (GM)</td><td class="metric-description">Intracellular volume fraction estimated by AMICO’s gray matter NODDI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">NODDI ISOVF (GM)</td><td class="metric-description">Isotropic volume fraction estimated by AMICO’s gray matter NODDI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">NODDI OD Modulated (GM)</td><td class="metric-description">Orientation dispersion index modulated by tissue fraction estimated by AMICO’s gray matter NODDI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">NODDI OD (GM)</td><td class="metric-description">Orientation dispersion index estimated by AMICO’s gray matter NODDI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE MAPMRI NG</td><td class="metric-description">Non-Gaussianity estimated by TORTOISE’s MAPMRI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE MAPMRI NG Par</td><td class="metric-description">Parallel non-Gaussianity estimated by TORTOISE’s MAPMRI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE MAPMRI NG Perp</td><td class="metric-description">Perpendicular non-Gaussianity estimated by TORTOISE’s MAPMRI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE MAPMRI PA</td><td class="metric-description">PA estimated by TORTOISE’s MAPMRI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE MAPMRI PATH</td><td class="metric-description">PAth estimated by TORTOISE’s MAPMRI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE MAPMRI RTAP</td><td class="metric-description">Return to axis probability estimated by TORTOISE’s MAPMRI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE MAPMRI RTOP</td><td class="metric-description">Return to origin probability estimated by TORTOISE’s MAPMRI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE MAPMRI RTPP</td><td class="metric-description">Return to plane probability estimated by TORTOISE’s MAPMRI model.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE MAPMRI AD</td><td class="metric-description">Axial diffusivity estimated by TORTOISE’s MAPMRI model from inner shells only.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE MAPMRI FA</td><td class="metric-description">Fractional anisotropy estimated by TORTOISE’s MAPMRI model from inner shells only.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE MAPMRI LI</td><td class="metric-description">LI estimated by TORTOISE’s MAPMRI model from inner shells only.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE MAPMRI RD</td><td class="metric-description">Radial diffusivity estimated by TORTOISE’s MAPMRI model from inner shells only.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE MAPMRI MD</td><td class="metric-description">Mean diffusivity estimated by TORTOISE’s MAPMRI model from inner shells only.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE Tensor AD</td><td class="metric-description">Axial diffusivity estimated by TORTOISE’s tensor model from all shells.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE Tensor FA</td><td class="metric-description">Fractional anisotropy estimated by TORTOISE’s tensor model from all shells.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE Tensor LI</td><td class="metric-description">LI estimated by TORTOISE’s tensor model from all shells.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE Tensor RD</td><td class="metric-description">Radial diffusivity estimated by TORTOISE’s tensor model from all shells.</td></tr>
+<tr class="metric-row" style="background-color: rgb(236, 241, 246); border-left: 0.42rem solid #3F6FA8"><td class="metric-name">TORTOISE Tensor MD</td><td class="metric-description">Mean diffusivity estimated by TORTOISE’s tensor model from all shells.</td></tr>
+<tr class="family-row" style="background-color: rgb(233, 243, 237); border-left: 0.42rem solid #268A4B"><th colspan="2"><span>ihMT</span><span class="family-count">5 metrics</span></th></tr>
+<tr class="metric-row" style="background-color: rgb(233, 243, 237); border-left: 0.42rem solid #268A4B"><td class="metric-name">ihMTw</td><td class="metric-description">Inhomogeneous magnetization transfer-weighted map estimated from ihMTRAGE.</td></tr>
+<tr class="metric-row" style="background-color: rgb(233, 243, 237); border-left: 0.42rem solid #268A4B"><td class="metric-name">ihMTR</td><td class="metric-description">Inhomogeneous magnetization transfer ratio map estimated from ihMTRAGE.</td></tr>
+<tr class="metric-row" style="background-color: rgb(233, 243, 237); border-left: 0.42rem solid #268A4B"><td class="metric-name">MTR</td><td class="metric-description">Magnetization transfer ratio map estimated from ihMTRAGE.</td></tr>
+<tr class="metric-row" style="background-color: rgb(233, 243, 237); border-left: 0.42rem solid #268A4B"><td class="metric-name">ihMTsat</td><td class="metric-description">Inhomogeneous magnetization transfer saturation map estimated from ihMTRAGE.</td></tr>
+<tr class="metric-row" style="background-color: rgb(233, 243, 237); border-left: 0.42rem solid #268A4B"><td class="metric-name">ihMTsat-B₁c</td><td class="metric-description">Inhomogeneous magnetization transfer saturation map normalized by squared B1+ estimated from ihMTRAGE and B1+ field map.</td></tr>
+<tr class="family-row" style="background-color: rgb(230, 245, 246); border-left: 0.42rem solid #0098A7"><th colspan="2"><span>MESE</span><span class="family-count">1 metric</span></th></tr>
+<tr class="metric-row" style="background-color: rgb(230, 245, 246); border-left: 0.42rem solid #0098A7"><td class="metric-name">R₂</td><td class="metric-description">Irreversible transverse relaxation rate, in seconds-1.</td></tr>
+<tr class="family-row" style="background-color: rgb(242, 237, 245); border-left: 0.42rem solid #7B4D9E"><th colspan="2"><span>MEGRE</span><span class="family-count">2 metrics</span></th></tr>
+<tr class="metric-row" style="background-color: rgb(242, 237, 245); border-left: 0.42rem solid #7B4D9E"><td class="metric-name">R₂*-E5</td><td class="metric-description">Apparent transverse relaxation rate, in seconds-1, estimated from all five echoes of the MEGRE scan.</td></tr>
+<tr class="metric-row" style="background-color: rgb(242, 237, 245); border-left: 0.42rem solid #7B4D9E"><td class="metric-name">R₂*-E4</td><td class="metric-description">Apparent transverse relaxation rate, in seconds-1, estimated from the last four echoes of the MEGRE scan.</td></tr>
+<tr class="family-row" style="background-color: rgb(239, 240, 248); border-left: 0.42rem solid #5F64B4"><th colspan="2"><span>MESE/MEGRE</span><span class="family-count">2 metrics</span></th></tr>
+<tr class="metric-row" style="background-color: rgb(239, 240, 248); border-left: 0.42rem solid #5F64B4"><td class="metric-name">R₂&#x27;-E5</td><td class="metric-description">Reversible transverse relaxation rate, in seconds-1, estimated from all five echoes of the MEGRE scan and the MESE scan.</td></tr>
+<tr class="metric-row" style="background-color: rgb(239, 240, 248); border-left: 0.42rem solid #5F64B4"><td class="metric-name">R₂&#x27;-E4</td><td class="metric-description">Reversible transverse relaxation rate, in seconds-1, estimated from the last four echoes of the MEGRE scan and the MESE scan.</td></tr>
+<tr class="family-row" style="background-color: rgb(253, 241, 234); border-left: 0.42rem solid #E86F2A"><th colspan="2"><span>MP2RAGE</span><span class="family-count">2 metrics</span></th></tr>
+<tr class="metric-row" style="background-color: rgb(253, 241, 234); border-left: 0.42rem solid #E86F2A"><td class="metric-name">R₁</td><td class="metric-description">R1 map estimated from MP2RAGE, without B1-correction. In s-1.</td></tr>
+<tr class="metric-row" style="background-color: rgb(253, 241, 234); border-left: 0.42rem solid #E86F2A"><td class="metric-name">R₁-B₁c</td><td class="metric-description">R1 map estimated from MP2RAGE, with B1-correction. In s-1.</td></tr>
+<tr class="family-row" style="background-color: rgb(248, 246, 233); border-left: 0.42rem solid #B9A224"><th colspan="2"><span>T₁w/T₂w</span><span class="family-count">2 metrics</span></th></tr>
+<tr class="metric-row" style="background-color: rgb(248, 246, 233); border-left: 0.42rem solid #B9A224"><td class="metric-name">MPRAGE-T1w/T2w</td><td class="metric-description">T1w/T2w ratio map estimated from MPRAGE T1w and SPACE T2w.</td></tr>
+<tr class="metric-row" style="background-color: rgb(248, 246, 233); border-left: 0.42rem solid #B9A224"><td class="metric-name">SPACE-T1w/T2w</td><td class="metric-description">T1w/T2w ratio map estimated from SPACE T1w and SPACE T2w.</td></tr>
+<tr class="family-row" style="background-color: rgb(238, 238, 238); border-left: 0.42rem solid #555555"><th colspan="2"><span>G-Ratio</span><span class="family-count">2 metrics</span></th></tr>
+<tr class="metric-row" style="background-color: rgb(238, 238, 238); border-left: 0.42rem solid #555555"><td class="metric-name">G-ihMTsat</td><td class="metric-description">g-ratio map estimated from ihMTsat-B1c, ISOVF, and ICVF maps.</td></tr>
+<tr class="metric-row" style="background-color: rgb(238, 238, 238); border-left: 0.42rem solid #555555"><td class="metric-name">G-ihMTR</td><td class="metric-description">g-ratio map estimated from ihMTR, ISOVF, and ICVF maps.</td></tr>
+<tr class="family-row" style="background-color: rgb(245, 241, 248); border-left: 0.42rem solid #9D6FBA"><th colspan="2"><span>Q-Ratio</span><span class="family-count">4 metrics</span></th></tr>
+<tr class="metric-row" style="background-color: rgb(245, 241, 248); border-left: 0.42rem solid #9D6FBA"><td class="metric-name">Q-Ratio-E5</td><td class="metric-description">R1 x R2*, estimated from the uncorrected R1 derived from the MP2RAGE scan and the R2* derived from all five echoes of the MEGRE scan. In seconds-2.</td></tr>
+<tr class="metric-row" style="background-color: rgb(245, 241, 248); border-left: 0.42rem solid #9D6FBA"><td class="metric-name">Q-Ratio-E5-B₁c</td><td class="metric-description">R1 x R2*, estimated from the B1-corrected R1 derived from the MP2RAGE scan and the R2* derived from all five echoes of the MEGRE scan. In seconds-2.</td></tr>
+<tr class="metric-row" style="background-color: rgb(245, 241, 248); border-left: 0.42rem solid #9D6FBA"><td class="metric-name">Q-Ratio-E4</td><td class="metric-description">R1 x R2*, estimated from the uncorrected R1 derived from the MP2RAGE scan and the R2* derived from the last four echoes of the MEGRE scan. In seconds-2.</td></tr>
+<tr class="metric-row" style="background-color: rgb(245, 241, 248); border-left: 0.42rem solid #9D6FBA"><td class="metric-name">Q-Ratio-E4-B₁c</td><td class="metric-description">R1 x R2*, estimated from the B1-corrected R1 derived from the MP2RAGE scan and the R2* derived from the last four echoes of the MEGRE scan. In seconds-2.</td></tr>
+<tr class="family-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><th colspan="2"><span>QSM</span><span class="family-count">20 metrics</span></th></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-SEPIA-E5-χ</td><td class="metric-description">Chi map from SEPIA toolbox, using all five echoes of the MEGRE scan.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-SEPIA-E4-χ</td><td class="metric-description">Chi map from SEPIA toolbox, using the last four echoes of the MEGRE scan.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂p-E5-χ</td><td class="metric-description">Chi map from χ-sep-net toolbox, using all five echoes of the MEGRE scan and R2’ map estimated from MEGRE and MESE scans.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂p-E4-χ</td><td class="metric-description">Chi map from χ-sep-net toolbox, using the last four echoes of the MEGRE scan and R2’ map estimated from MEGRE and MESE scans.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂p-E5-para</td><td class="metric-description">Paramagnetic susceptibility map from χ-sep-net toolbox, using all five echoes of the MEGRE scan and R2’ map estimated from MEGRE and MESE scans.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂p-E4-Para</td><td class="metric-description">Paramagnetic susceptibility map from χ-sep-net toolbox, using the last four echoes of the MEGRE scan and R2’ map estimated from MEGRE and MESE scans.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂p-E5-dia</td><td class="metric-description">Diamagnetic susceptibility map from χ-sep-net toolbox, using all five echoes of the MEGRE scan and R2’ map estimated from MEGRE and MESE scans.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂p-E4-Dia</td><td class="metric-description">Diamagnetic susceptibility map from χ-sep-net toolbox, using the last four echoes of the MEGRE scan and R2’ map estimated from MEGRE and MESE scans.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂pnet-E5-χ</td><td class="metric-description">Chi map from χ-sep-net toolbox, using all five echoes of the MEGRE scan and R2pnet algorithm.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂pnet-E4-χ</td><td class="metric-description">Chi map from χ-sep-net toolbox, using the last four echoes of the MEGRE scan and R2pnet algorithm.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂pnet-E5-Para</td><td class="metric-description">Paramagnetic susceptibility map from χ-sep-net toolbox, using all five echoes of the MEGRE scan and R2pnet algorithm.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂pnet-E4-Para</td><td class="metric-description">Paramagnetic susceptibility map from χ-sep-net toolbox, using the last four echoes of the MEGRE scan and R2pnet algorithm.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂pnet-E5-Dia</td><td class="metric-description">Diamagnetic susceptibility map from χ-sep-net toolbox, using all five echoes of the MEGRE scan and R2pnet algorithm.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂pnet-E4-Dia</td><td class="metric-description">Diamagnetic susceptibility map from χ-sep-net toolbox, using the last four echoes of the MEGRE scan and R2pnet algorithm.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂*-E5-χ</td><td class="metric-description">Chi map from χ-sep-net toolbox, using all five echoes of the MEGRE scan and R2* map estimated from MEGRE scan.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂*-E4-χ</td><td class="metric-description">Chi map from χ-sep-net toolbox, using the last four echoes of the MEGRE scan and R2* map estimated from MEGRE scan.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂*-E5-Para</td><td class="metric-description">Paramagnetic susceptibility map from χ-sep-net toolbox, using all five echoes of the MEGRE scan and R2* map estimated from MEGRE scan.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂*-E4-Para</td><td class="metric-description">Paramagnetic susceptibility map from χ-sep-net toolbox, using the last four echoes of the MEGRE scan and R2* map estimated from MEGRE scan.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂*-E5-Dia</td><td class="metric-description">Diamagnetic susceptibility map from χ-sep-net toolbox, using all five echoes of the MEGRE scan and R2* map estimated from MEGRE scan.</td></tr>
+<tr class="metric-row" style="background-color: rgb(247, 236, 242); border-left: 0.42rem solid #B13F82"><td class="metric-name">QSM-χ-R₂*-E4-Dia</td><td class="metric-description">Diamagnetic susceptibility map from χ-sep-net toolbox, using the last four echoes of the MEGRE scan and R2* map estimated from MEGRE scan.</td></tr>
+    </tbody>
+  </table>
+</main>
+</body>
+</html>

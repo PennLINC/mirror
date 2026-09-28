@@ -33,8 +33,8 @@ exclude = [
 line-length = 100
 indent-width = 4
 
-# Assume Python 3.9
-target-version = "py39"
+# Match the Python version pinned by the project environments.
+target-version = "py311"
 
 [lint]
 # Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`) codes by default.
@@ -49,6 +49,12 @@ unfixable = []
 
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[lint.per-file-ignores]
+# These scripts intentionally configure Matplotlib before importing it.
+"figures/figure_01_primary_maps/plot_figure_1_primary_maps.py" = ["E402"]
+"figures/figure_s01_workflow/plot_figure_s1_workflow.py" = ["E402"]
+"processing/04_quality_control/03_analysis_qc/generate_qc_report.py" = ["E402"]
 
 [format]
 quote-style = "single"

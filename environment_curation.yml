@@ -129,4 +129,3 @@ dependencies:
     - urllib3==2.4.0
     - wheel==0.45.1
     - zipp==3.23.0
-prefix: /cbica/projects/nibs/.conda/envs/curation
