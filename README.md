@@ -1,9 +1,8 @@
 # MIRROR data descriptor code
+See reproducibility guide at https://pennlinc.github.io/mirror/
 
 Reproducible curation, processing, analysis, figure, and table code for the
-MIRROR multimodal MRI data descriptor. The checkout name is not significant:
-all repository assets resolve from `__file__`, while dataset paths come from a
-YAML profile.
+MIRROR multimodal MRI data descriptor.
 
 ## Project layout
 
