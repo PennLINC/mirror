@@ -63,9 +63,12 @@ table before resubmitting a missing index.
 
 ## A downstream job started too early
 
-Use `--dependency=afterok:<job-id>`. In particular:
+Wait for the prerequisite job and all required array tasks to finish
+successfully, then resubmit the affected downstream job. Check `sacct` and
+the job logs, rather than assuming a job has succeeded when it leaves
+`squeue`. In particular:
 
-- atlas and bundle warping require T1w registration;
+- atlas and bundle warping require T₁w registration;
 - DKT statistics require atlas warping;
 - bundle statistics require bundle warping; and
 - regional correlation, ICC, and discriminability require both regional

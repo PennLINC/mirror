@@ -1,7 +1,9 @@
 # MIRROR reproducibility guide
 
 This directory is a self-contained [Jupyter Book](https://jupyterbook.org/)
-for reproducing the MIRROR manuscript workflow after source-scalar generation.
+covering MIRROR data curation, derivatives creation, and manuscript analyses.
+Lab replication begins at registration and warping, after source metric
+processing is complete.
 
 ## Build locally
 
@@ -14,7 +16,7 @@ python -m pip install -r reproducibility_guide/requirements.txt
 jupyter-book build reproducibility_guide
 ```
 
-Open `reproducibility_guide/_build/html/index.html` in a browser. The generated
+Open `reproducibility_guide/_build/html/0_basic_info.html` in a browser. The generated
 `_build/` directory is ignored by `reproducibility_guide/.gitignore`.
 
 ## Publish
