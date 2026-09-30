@@ -2,17 +2,17 @@
 
 ## Clone the repository
 
-```bash
-git clone -b code_reorg \
-  git@github.com:PennLINC/nibs.git \
-  /cbica/projects/nibs/code_replication
-cd /cbica/projects/nibs/code_replication
-bash configuration/create_log_directories.sh
+```{note}
+The paths below reproduce the CUBIC example used for this guide;
+other locations work when the profile is updated accordingly.
 ```
 
-The checkout does not have to be named `MIRROR` or placed directly below the
-project root. The paths below reproduce the CUBIC example used for this guide;
-other locations work when the profile is updated accordingly.
+```bash
+git clone -b code_reorg \
+  git@github.com:PennLINC/mirror.git \
+  /cbica/projects/nibs/code_replication
+cd /cbica/projects/nibs/code_replication
+```
 
 ## Create the processing environment
 
@@ -20,10 +20,10 @@ The processing environment also supplies the packages used by the analyses and
 figure scripts:
 
 ```bash
-micromamba env create \
+conda env create \
   -f environment_processing.yml \
   --channel-priority=flexible
-micromamba activate processing
+conda activate processing
 ```
 
 The curation environment is unnecessary unless the raw BIDS dataset is being
@@ -31,7 +31,7 @@ rebuilt.
 
 ## Configure the replication profile
 
-Edit the included replication profile directly from the repository root:
+Inspect the included replication profile from the repository root:
 
 ```bash
 nano configuration/profiles/replication.example.yml
@@ -39,6 +39,13 @@ nano configuration/profiles/replication.example.yml
 
 JSON syntax is valid YAML and can be loaded even when PyYAML is not installed.
 A cluster profile may look like:
+
+```{note}
+The lab replicator on CUBIC can use the included
+`configuration/profiles/replication.example.yml` directly without modification.
+The JSON below summarizes its data paths; the file also includes the configured
+container and software paths. For another system, edit those paths as needed.
+```
 
 ```json
 {
@@ -81,7 +88,6 @@ modified profile does not prevent job submission.
 ```{warning}
 Use a new, preferably nonexistent, `output_derivatives_dir` for the replication.
 Rerunning within that same directory may replace outputs from that replication.
-It will not affect the manuscript run when the two profiles use different paths.
 ```
 
 ## Select and inspect the profile
@@ -109,6 +115,12 @@ checkout itself is discovered from Git because `code_dir` is `auto`.
 `logs_dir: auto` similarly follows the checkout, so renaming or moving the
 clone does not require a hard-coded log path.
 
+## Create log directories and submit jobs
+
+```bash
+bash configuration/create_log_directories.sh
+```
+
 The SBATCH headers use relative paths such as
 `logs/t1w_reg/%x-%A_%a.out`. Slurm does not create missing parent directories;
 `configuration/create_log_directories.sh` creates every required job folder.
@@ -116,11 +128,10 @@ It is safe to rerun after adding or renaming launchers. Submit all documented
 SBATCH commands from the repository root so those relative paths resolve
 inside the checkout.
 
-## Optional repository checks
-
-```bash
-python -m compileall -q analysis configuration curation figures processing utils
-find analysis configuration curation processing figures -type f \
-  \( -name '*.sh' -o -name '*.sbatch' \) -print0 \
-  | xargs -0 -n1 bash -n
+```{important}
+**Submit every `sbatch` command from the repository root**, with the
+`processing` environment active and `MIRROR_CONFIG` exported. The commands
+in this guide submit jobs immediately; wait for each stated prerequisite to
+finish successfully before submitting downstream jobs. For arrays, wait for
+all required participant tasks.
 ```

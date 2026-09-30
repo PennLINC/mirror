@@ -1,36 +1,49 @@
 # Prepare analysis inputs
 
 The analysis preparation stage creates MNI ribbon masks and regional summary
-tables used by multiple downstream analyses.
+tables used by multiple downstream analyses. All output paths below are
+relative to `output_derivatives_dir`. Wait for each prerequisite job to finish
+successfully before submitting its dependent job.
 
 ## MNI ribbon masks
 
 ```bash
-ribbon_job=$(sbatch --parsable \
-  analysis/00_prepare_inputs/01_mni_ribbon_masks/submit.sbatch)
+sbatch analysis/00_prepare_inputs/01_mni_ribbon_masks/submit.sbatch
 ```
 
 These subject-specific masks are used by the GM/WM effect-size workflow and by
 voxelwise correlations using subject masks. The shared mask-construction code
 is in `utils/tissue_masks.py`.
 
+The job resamples FreeSurfer ribbon labels into MNI space and writes NIfTI
+masks beneath `mni_ribbon_masks/`. It needs the reusable anatomical
+derivatives and can run independently of the registration and warp jobs.
+
 ## DKT parcel statistics
 
 This step requires successful DKT atlas warping:
 
 ```bash
-dkt_stats_job=$(sbatch --parsable --dependency="afterok:${dkt_warp_job}" \
-  analysis/00_prepare_inputs/02_dkt_parcel_stats/submit.sbatch)
+sbatch analysis/00_prepare_inputs/02_dkt_parcel_stats/submit.sbatch
 ```
+
+The job summarizes each scalar metric within DKT parcels, using labels in
+the matching image space. It writes per-participant CSV summary and coverage
+tables plus TSV metric inventories beneath `DKTatlas_myelin_stats/`. These
+tables feed regional correlations, ICC, and discriminability.
 
 ## AutoTrack bundle statistics
 
 This step requires successful bundle warping:
 
 ```bash
-bundle_stats_job=$(sbatch --parsable --dependency="afterok:${bundle_warp_job}" \
-  analysis/00_prepare_inputs/03_bundle_myelin_stats/submit.sbatch)
+sbatch analysis/00_prepare_inputs/03_bundle_myelin_stats/submit.sbatch
 ```
+
+The job uses tract-density maps to summarize scalar values within AutoTrack
+bundles. It writes per-participant/session TSV statistics, coverage, and metric
+inventories beneath `bundle_myelin_stats/`, providing the bundle inputs for
+regional correlations, ICC, and discriminability.
 
 This launcher first looks for `tckmap` in the activated environment's `PATH`.
 When it is available, the task runs in that host environment. Otherwise, the
