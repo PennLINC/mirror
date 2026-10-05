@@ -34,6 +34,7 @@ from pathlib import Path
 from pprint import pformat
 
 import nibabel as nb
+import numpy as np
 from bids.layout import BIDSLayout, Query
 from nilearn import image
 from scipy.io import loadmat, savemat
@@ -216,6 +217,36 @@ def collect_run_data(layout: object, bids_filters: dict) -> dict[str, str]:
 
     print(f'Collected run data:\n{pformat(run_data, indent=4)}', flush=True)
     return run_data
+
+
+def write_unscaled_concat(imgs: list[str], out_file: str) -> None:
+    """Concatenate echo images and write them as float32 with no intensity scaling.
+
+    ``nilearn.image.concat_imgs(...).to_filename`` lets nibabel store the result
+    as int16 with ``scl_slope``/``scl_inter`` (e.g. slope 0.0257, intercept 843.5
+    for NIBS magnitudes). MATLAB's ``niftiread`` ignores those factors, so
+    ``process_qsm_chisep.m`` read the raw stored integers: the magnitude came out
+    inverted (increasing with TE), and ARLO R2* was negative, then clipped to 0,
+    in most voxels. float32 holds the echo values exactly, so every reader sees
+    the true values. SEPIA applies the scaling itself (``load_nii_img_only``), so it
+    only ever saw the small int16 requantization, which shifts its BET mask and
+    some ROMEO 2-pi choices at the brain edge.
+    """
+    concat = image.concat_imgs(imgs)
+    data = np.asarray(concat.get_fdata(), dtype=np.float32)
+    out = nb.Nifti1Image(data, concat.affine, concat.header)
+    out.set_data_dtype(np.float32)
+    out.header.set_slope_inter(1, 0)
+    out.to_filename(out_file)
+
+    # Fail loudly if the file would still need scaling to be read correctly.
+    written = nb.load(out_file)
+    if (
+        written.get_data_dtype() != np.float32
+        or written.dataobj.slope != 1
+        or written.dataobj.inter != 0
+    ):
+        raise RuntimeError(f'{out_file} was written with intensity scaling')
 
 
 def run_sepia(
@@ -445,8 +476,8 @@ def process_run(layout, run_data, out_dir, subject_id, session):
         mag_concat_file = f'{prefix}part-mag_desc-concat_MEGRE.nii.gz'
         phase_concat_file = f'{prefix}part-phase_desc-concat_MEGRE.nii.gz'
         header_concat_file = f'{prefix}header.mat'
-        image.concat_imgs(mag_imgs).to_filename(mag_concat_file)
-        image.concat_imgs(phase_imgs).to_filename(phase_concat_file)
+        write_unscaled_concat(mag_imgs, mag_concat_file)
+        write_unscaled_concat(phase_imgs, phase_concat_file)
         savemat(header_concat_file, header_struct)
 
         # Run SEPIA once for this echo set.
