@@ -8,7 +8,7 @@ other locations work when the profile is updated accordingly.
 ```
 
 ```bash
-git clone -b code_reorg \
+git clone \
   git@github.com:PennLINC/mirror.git \
   /cbica/projects/nibs/code_replication
 cd /cbica/projects/nibs/code_replication
@@ -20,9 +20,9 @@ The processing environment also supplies the packages used by the analyses and
 figure scripts:
 
 ```bash
+conda config --set channel_priority flexible
 conda env create \
-  -f environment_processing.yml \
-  --channel-priority=flexible
+  -f environment_processing.yml
 conda activate processing
 ```
 

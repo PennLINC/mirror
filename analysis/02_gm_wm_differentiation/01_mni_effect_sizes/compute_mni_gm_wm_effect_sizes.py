@@ -2,10 +2,11 @@
 """Compute within-scan voxelwise GM-vs-WM effect sizes for MNI scalar maps.
 
 For each subject/session/metric, this script compares subject-specific cortical
-GM, deep GM, and all GM with subject-specific WM. Cortical GM comes from each
-subject's precomputed MNI-space sMRIPrep ribbon; the remaining masks combine
-the subject MNI dseg with deterministic template labels. Signed GM - WM effect
-sizes are averaged across repeated sessions and summarized across subjects.
+GM with subject-specific WM by default. Cortical GM comes from each subject's
+precomputed MNI-space sMRIPrep ribbon; the remaining masks combine the subject
+MNI dseg with deterministic template labels. Deep and all-GM comparisons can
+be requested explicitly. Signed GM - WM effect sizes are averaged across
+repeated sessions and summarized across subjects.
 """
 
 from __future__ import annotations
@@ -413,7 +414,7 @@ def parse_args() -> argparse.Namespace:
         action='append',
         choices=GM_TISSUES,
         default=None,
-        help='GM compartment(s) to compare with WM; defaults to all three.',
+        help='GM compartment(s) to compare with WM; defaults to cortical GM.',
     )
     parser.add_argument(
         '--template-dseg',
@@ -448,7 +449,9 @@ def main() -> None:
     args.patterns_file = args.patterns_file.expanduser().resolve()
     args.output_dir = args.output_dir.expanduser().resolve()
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    args.gm_tissues = args.gm_tissue if args.gm_tissue else list(GM_TISSUES)
+    # The manuscript reports cortical GM versus WM. Deep/all-GM outputs remain
+    # available when explicitly requested with one or more --gm-tissue flags.
+    args.gm_tissues = args.gm_tissue if args.gm_tissue else ['cortical_gm']
     data_candidates = (CODE_ROOT / 'data' / 'atlases',)
     if args.template_dseg is None:
         args.template_dseg = next(

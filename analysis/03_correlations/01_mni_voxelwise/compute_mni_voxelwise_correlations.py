@@ -4,11 +4,11 @@
 For each subject/session and tissue mask, this script loads configured
 space-MNI152NLin2009cAsym scalar maps, computes pairwise-valid voxelwise
 correlations, Fisher-z transforms them, and averages first within subject and
-then across subjects. By default, only the primary metric set is processed and
-cortical GM comes from each subject's
-precomputed MNI-space sMRIPrep ribbon, deep GM is the intersection of subject
-GM and deterministic template deep-GM labels, and all GM/WM come from the
-subject MNI dseg. Selecting the full set also writes the primary result view.
+then across subjects. By default, only the primary metric set and
+cortical-GM/WM compartments are processed. Cortical GM comes from each
+subject's precomputed MNI-space sMRIPrep ribbon, while WM comes from the
+subject MNI dseg. Deep GM and all-GM outputs can be requested explicitly.
+Selecting the full set also writes the primary result view.
 """
 
 from __future__ import annotations
@@ -302,6 +302,13 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help='Deterministic FreeSurfer aseg dseg used to define template tissue compartments.',
     )
+    parser.add_argument(
+        '--tissue',
+        action='append',
+        choices=TISSUES,
+        default=None,
+        help='Tissue compartment(s) to process; defaults to cortical GM and WM.',
+    )
     parser.add_argument('--gm-erosion-mm', type=float, default=0.0)
     parser.add_argument('--wm-erosion-mm', type=float, default=0.0)
     parser.add_argument(
@@ -351,6 +358,7 @@ def parse_args() -> argparse.Namespace:
         raise FileNotFoundError(f'Template aseg dseg not found: {args.template_dseg}')
     if args.gm_erosion_mm < 0 or args.wm_erosion_mm < 0:
         parser.error('Tissue mask erosion distances must be nonnegative.')
+    args.tissues = args.tissue if args.tissue else ['cortical_gm', 'wm']
     return args
 
 
@@ -398,9 +406,11 @@ def main() -> None:
             args.gm_erosion_mm,
             args.wm_erosion_mm,
         )
-    z_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in TISSUES}
-    count_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in TISSUES}
-    proportion_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in TISSUES}
+    z_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in args.tissues}
+    count_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in args.tissues}
+    proportion_mats: dict[str, list[pd.DataFrame]] = {
+        tissue: [] for tissue in args.tissues
+    }
 
     for subject in subjects:
         sessions = (
@@ -408,9 +418,15 @@ def main() -> None:
             if args.session_id
             else discover_sessions(args.derivatives_dir, subject)
         )
-        subject_z_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in TISSUES}
-        subject_count_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in TISSUES}
-        subject_proportion_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in TISSUES}
+        subject_z_mats: dict[str, list[pd.DataFrame]] = {
+            tissue: [] for tissue in args.tissues
+        }
+        subject_count_mats: dict[str, list[pd.DataFrame]] = {
+            tissue: [] for tissue in args.tissues
+        }
+        subject_proportion_mats: dict[str, list[pd.DataFrame]] = {
+            tissue: [] for tissue in args.tissues
+        }
         for session in sessions:
             metric_paths = metric_paths_for_session(
                 args.derivatives_dir,
@@ -497,7 +513,7 @@ def main() -> None:
                 for label, path in metric_paths.items()
             }
             data = pd.DataFrame(metric_data)
-            for tissue in TISSUES:
+            for tissue in args.tissues:
                 analysis_data = data
                 tissue_labels = [
                     label

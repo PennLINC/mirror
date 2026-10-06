@@ -10,7 +10,7 @@ dependencies:
 
   # Direct Python dependencies imported by retained processing, analysis,
   # figure, or shared utility code. Pip resolves their transitive packages.
-  # PyMP2RAGE has no published release and documents installation from Git.
+  # Use the PennLINC development branches used for MIRROR processing.
   - pip:
       - antspyx==0.6.3
       - imgcat==0.6.0
@@ -28,4 +28,5 @@ dependencies:
       - seaborn==0.13.2
       - tedana==26.0.3
       - tqdm==4.67.1
-      - git+https://github.com/Gilles86/pymp2rage.git
+      - git+https://github.com/PennLINC/ihmt_proc.git@mirror-dev
+      - git+https://github.com/PennLINC/pymp2rage.git@mirror-dev
