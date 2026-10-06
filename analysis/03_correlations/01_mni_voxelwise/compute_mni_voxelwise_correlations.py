@@ -408,9 +408,7 @@ def main() -> None:
         )
     z_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in args.tissues}
     count_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in args.tissues}
-    proportion_mats: dict[str, list[pd.DataFrame]] = {
-        tissue: [] for tissue in args.tissues
-    }
+    proportion_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in args.tissues}
 
     for subject in subjects:
         sessions = (
@@ -418,12 +416,8 @@ def main() -> None:
             if args.session_id
             else discover_sessions(args.derivatives_dir, subject)
         )
-        subject_z_mats: dict[str, list[pd.DataFrame]] = {
-            tissue: [] for tissue in args.tissues
-        }
-        subject_count_mats: dict[str, list[pd.DataFrame]] = {
-            tissue: [] for tissue in args.tissues
-        }
+        subject_z_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in args.tissues}
+        subject_count_mats: dict[str, list[pd.DataFrame]] = {tissue: [] for tissue in args.tissues}
         subject_proportion_mats: dict[str, list[pd.DataFrame]] = {
             tissue: [] for tissue in args.tissues
         }
