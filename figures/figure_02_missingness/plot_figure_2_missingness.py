@@ -132,8 +132,13 @@ def main(argv: Sequence[str] | None = None) -> None:
 
     df = pd.read_table(args.input.expanduser().resolve(), index_col='participant_id')
     df = df.fillna(0)
-    df['Session 01--MP2RAGE'] = df[['Session 01--MP2RAGE', 'Session 01--MP2RAGE-P']].mean(axis=1)
-    df['Session 02--MP2RAGE'] = df[['Session 02--MP2RAGE', 'Session 02--MP2RAGE-P']].mean(axis=1)
+    # Legacy tables store MP2RAGE magnitude and phase as separate columns;
+    # current tables encode the same status directly in MP2RAGE as 0, 0.5, or 1.
+    for session in ('Session 01', 'Session 02'):
+        mp2rage = f'{session}--MP2RAGE'
+        phase = f'{session}--MP2RAGE-P'
+        if phase in df.columns:
+            df[mp2rage] = df[[mp2rage, phase]].mean(axis=1)
     columns = df.columns.tolist()
     columns = [c for c in columns if not c.endswith('MP2RAGE-P')]
     # Preserve the acquisition order used in the manuscript.
